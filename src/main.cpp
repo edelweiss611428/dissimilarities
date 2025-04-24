@@ -1,33 +1,44 @@
 #include<RcppArmadillo.h>
 #include "distances.h"
 
-// [[Rcpp::export]]
-double DistMinkowski(const arma::vec& x,
-                     const arma::vec& y,
-                     int n){
-  return minkowskiCpp(x,y, n);
-};
+int indexing(int nr, int i, int j){
 
-// [[Rcpp::export]]
-double DistMaximum(const arma::vec& x,
-                     const arma::vec& y){
-  return maximumCpp(x,y);
-};
+  if (i < j+1){
+    int temp;
+    temp = i;
+    i = j;
+    j = temp;
+  } else if(i == j) {
+    return 0;
+  }
 
-// [[Rcpp::export]]
-double DistCanberra(const arma::vec& x,
-                    const arma::vec& y){
-  return canberraCpp(x,y);
-};
+  return ((2*nr-1-j)*j >> 1) - 1 + (i-j);
+
+}
 
 
 // [[Rcpp::export]]
-double DistCosine(const arma::vec& x,
-                    const arma::vec& y){
-  return cosineCpp(x,y);
-};
+NumericVector dist(const arma::mat& X, bool diag = false, bool upper = false){
+
+  int nr = X.n_rows;
+  int len = nr*(nr-1) >> 1;
+  NumericVector dmat(len);
+  int id;
+
+  for (int i = 0; i < nr; i++) {
+    for (int j = i+1; j < nr; j++) {
+      id = indexing(nr, i, j);
+      dmat(id) = euclideanCpp(X.row(i), X.row(j));
+    }
+  }
+
+  dmat.attr("Size") = nr;
+  dmat.attr("Diag") = diag;
+  dmat.attr("Upper") = upper;
+  dmat.attr("class") = "dist";
+
+  return dmat;
 
 
 
-
-
+}
