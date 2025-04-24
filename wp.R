@@ -14,7 +14,7 @@ devtools::document()
 devtools::load_all()
 
 set.seed(1)
-X = matrix(rnorm(1000), nrow = 100)
+X = matrix(rnorm(100000), nrow = 10)
 
 library("proxy")
 library("microbenchmark")
@@ -24,3 +24,4 @@ dissimilarities::dist(X)
 
 microbenchmark(dissimilarities::dist(X),
                stats::dist(X))
+
