@@ -4,7 +4,9 @@
 #include<RcppArmadillo.h>
 using namespace Rcpp;
 
-double minkowskiCpp(const arma::vec& x, const arma::vec& y, int n);
+double manhattanCpp(const arma::vec& x, const arma::vec& y);
+
+double euclideanCpp(const arma::rowvec& x, const arma::rowvec& y);
 
 double maximumCpp(const arma::vec& x, const arma::vec& y);
 

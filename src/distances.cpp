@@ -1,16 +1,20 @@
 #include<RcppArmadillo.h>
 #include "distances.h"
 
-double minkowskiCpp(const arma::vec& x, const arma::vec& y, int n){
-  return arma::norm(x - y, n);
+double manhattanCpp(const arma::rowvec& x, const arma::rowvec& y){
+  return arma::norm(x - y, 1);
 };
 
-double maximumCpp(const arma::vec& x, const arma::vec& y){
+double euclideanCpp(const arma::rowvec& x, const arma::rowvec& y){
+  return arma::norm(x - y, 2);
+};
+
+double maximumCpp(const arma::rowvec& x, const arma::rowvec& y){
   return arma::norm(x - y, "inf");
 };
 
 
-double canberraCpp(const arma::vec& x, const arma::vec& y){
+double canberraCpp(const arma::rowvec& x, const arma::rowvec& y){
   double dist = 0.0;
   for (int i = 0; i < x.n_elem; i++) {
     double n = std::abs(x(i) - y(i));
@@ -23,7 +27,7 @@ double canberraCpp(const arma::vec& x, const arma::vec& y){
 };
 
 
-double cosineCpp(const arma::vec& x, const arma::vec& y){
+double cosineCpp(const arma::rowvec& x, const arma::rowvec& y){
   return 1 - arma::dot(x, y)/(arma::norm(x, 2) * arma::norm(y, 2));
 };
 

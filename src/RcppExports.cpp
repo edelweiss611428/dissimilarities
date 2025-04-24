@@ -11,61 +11,22 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// DistMinkowski
-double DistMinkowski(const arma::vec& x, const arma::vec& y, int n);
-RcppExport SEXP _dissimilarities_DistMinkowski(SEXP xSEXP, SEXP ySEXP, SEXP nSEXP) {
+// dist
+NumericVector dist(const arma::mat& X, bool diag, bool upper);
+RcppExport SEXP _dissimilarities_dist(SEXP XSEXP, SEXP diagSEXP, SEXP upperSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(DistMinkowski(x, y, n));
-    return rcpp_result_gen;
-END_RCPP
-}
-// DistMaximum
-double DistMaximum(const arma::vec& x, const arma::vec& y);
-RcppExport SEXP _dissimilarities_DistMaximum(SEXP xSEXP, SEXP ySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(DistMaximum(x, y));
-    return rcpp_result_gen;
-END_RCPP
-}
-// DistCanberra
-double DistCanberra(const arma::vec& x, const arma::vec& y);
-RcppExport SEXP _dissimilarities_DistCanberra(SEXP xSEXP, SEXP ySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(DistCanberra(x, y));
-    return rcpp_result_gen;
-END_RCPP
-}
-// DistCosine
-double DistCosine(const arma::vec& x, const arma::vec& y);
-RcppExport SEXP _dissimilarities_DistCosine(SEXP xSEXP, SEXP ySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(DistCosine(x, y));
+    Rcpp::traits::input_parameter< const arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
+    Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
+    rcpp_result_gen = Rcpp::wrap(dist(X, diag, upper));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_dissimilarities_DistMinkowski", (DL_FUNC) &_dissimilarities_DistMinkowski, 3},
-    {"_dissimilarities_DistMaximum", (DL_FUNC) &_dissimilarities_DistMaximum, 2},
-    {"_dissimilarities_DistCanberra", (DL_FUNC) &_dissimilarities_DistCanberra, 2},
-    {"_dissimilarities_DistCosine", (DL_FUNC) &_dissimilarities_DistCosine, 2},
+    {"_dissimilarities_dist", (DL_FUNC) &_dissimilarities_dist, 3},
     {NULL, NULL, 0}
 };
 
