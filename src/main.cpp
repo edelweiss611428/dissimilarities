@@ -9,10 +9,24 @@ double DistMinkowski(const arma::vec& x,
 };
 
 // [[Rcpp::export]]
+double DistMaximum(const arma::vec& x,
+                     const arma::vec& y){
+  return maximumCpp(x,y);
+};
+
+// [[Rcpp::export]]
 double DistCanberra(const arma::vec& x,
                     const arma::vec& y){
   return canberraCpp(x,y);
 };
+
+
+// [[Rcpp::export]]
+double DistCosine(const arma::vec& x,
+                    const arma::vec& y){
+  return cosineCpp(x,y);
+};
+
 
 
 

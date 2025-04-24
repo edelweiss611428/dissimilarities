@@ -5,7 +5,15 @@ DistMinkowski <- function(x, y, n) {
     .Call(`_dissimilarities_DistMinkowski`, x, y, n)
 }
 
+DistMaximum <- function(x, y) {
+    .Call(`_dissimilarities_DistMaximum`, x, y)
+}
+
 DistCanberra <- function(x, y) {
     .Call(`_dissimilarities_DistCanberra`, x, y)
+}
+
+DistCosine <- function(x, y) {
+    .Call(`_dissimilarities_DistCosine`, x, y)
 }
 

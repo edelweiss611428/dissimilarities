@@ -14,15 +14,16 @@ devtools::document()
 devtools::load_all()
 
 set.seed(1)
-x = c(rnorm(99), NA)
+x = rnorm(10^2)
 y = rnorm(10^2)
 
 library("proxy")
 library("microbenchmark")
-dissimilarities::getdist(x,y)
-proxy::dist(t(x),t(y))
+dissimilarities::DistMaximum(x,y)
+proxy::dist(t(x),t(y), method = "maximum")
 mat = cbind(x,y)
+stats::dist(t(mat), method = "maximum")
 
-microbenchmark(dissimilarities::getdist(x,y),
+microbenchmark(dissimilarities::DistMinkowski(x,y, 2),
                proxy::dist(t(x),t(y)),
-               stats::dist(t(mat)))
+               stats::dist(t(mat), method = "canberra"))
