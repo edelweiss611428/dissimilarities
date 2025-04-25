@@ -8,7 +8,7 @@
 #' @param A A numeric matrix.
 #' @param B A numeric matrix.
 #' @param method A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".
-#' @param p A positive interger, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
+#' @param p A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
 #'
 #' @details This function computes a distance "matrix" storing pairwise distances between rows of two numeric matrices A and B.
 #'
@@ -23,9 +23,9 @@
 #' X = matrix(rnorm(200), nrow = 50)
 #' A = X[1:25,]
 #' B = X[26:50,]
-#' microbenchmark(proxy::dist(A,B, "minkowski", p = 5L),
+#' microbenchmark(proxy::dist(A,B, "minkowski", p = 5),
 #'                fastDistAB(A,B, "minkowski", p = 5L))
-#' all.equal(proxy::dist(A,B, "minkowski", 5L), fastDistAB(A,B, "minkowski", p = 5L))
+#' all.equal(proxy::dist(A,B, "minkowski", p = 5), fastDistAB(A,B, "minkowski", p = 5L))
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 

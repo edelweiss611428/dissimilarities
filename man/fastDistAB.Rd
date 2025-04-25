@@ -13,7 +13,7 @@ fastDistAB(A, B, method, p = 2)
 
 \item{method}{A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".}
 
-\item{p}{A positive interger, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
+\item{p}{A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
 }
 \value{
 A matrix storing pairwise distances between rows of A and B.
@@ -30,9 +30,9 @@ library("microbenchmark")
 X = matrix(rnorm(200), nrow = 50)
 A = X[1:25,]
 B = X[26:50,]
-microbenchmark(proxy::dist(A,B, "minkowski", p = 5L),
+microbenchmark(proxy::dist(A,B, "minkowski", p = 5),
                fastDistAB(A,B, "minkowski", p = 5L))
-all.equal(proxy::dist(A,B, "minkowski", 5L), fastDistAB(A,B, "minkowski", p = 5L))
+all.equal(proxy::dist(A,B, "minkowski", p = 5), fastDistAB(A,B, "minkowski", p = 5L))
 }
 \author{
 Minh Long Nguyen \email{edelweiss611428@gmail.com}

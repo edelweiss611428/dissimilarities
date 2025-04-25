@@ -9,7 +9,7 @@
 #' @param method A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".
 #' @param diag A boolean value, indicating whether to display the diagonal entries.
 #' @param upper A boolean value, indicating whether to display the upper triangular entries.
-#' @param p A positive interger, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
+#' @param p A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
 #'
 #' @details This function computes a distance matrix of class "dist", consisting of pair-wise distances between rows in the input data matrix. This object is internally an 1d array.
 #'

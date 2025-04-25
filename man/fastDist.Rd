@@ -15,7 +15,7 @@ fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 
 \item{upper}{A boolean value, indicating whether to display the upper triangular entries.}
 
-\item{p}{A positive interger, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
+\item{p}{A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
 }
 \value{
 A distance matrix of class "dist".
