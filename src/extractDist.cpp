@@ -27,12 +27,12 @@ NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector 
   int n = idx.size();
   NumericVector subdmat((n-1)*n >> 1);
   double* subdmatptr = REAL(subdmat);
+  double* distptr = REAL(dist);
   int k = 0;
 
   for(int i = 0; i < n-1; i++){
     for(int j = (i+1); j < n; j++){
-      subdmatptr[k++] = dist[indexing(N, idx[i], idx[j])];
-      k++;
+      subdmatptr[k++] = distptr[indexing(N, idx[i], idx[j])];
     }
   }
 
@@ -55,13 +55,15 @@ NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &
   int n2 = idx2.size();
   NumericMatrix subdmat(n1,n2);
   int k = 0;
+  double* subdmatptr = &subdmat(0, 0);
+  double* distptr = REAL(dist);
 
   for(int i=0; i<n2;i++){
     for(int j=0;j<n1;j++){
       if(idx2[i] == idx1[j]){
-        subdmat[k] = 0;
+        subdmatptr[k] = 0;
       } else{
-        subdmat[k] = dist[indexing(N,idx2[i],idx1[j])];
+        subdmatptr[k] = distptr[indexing(N,idx2[i],idx1[j])];
       }
       k++;
     }
@@ -72,9 +74,9 @@ NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &
 }
 
 
-// subsetColsDist2MatCpp(): Extracting a distance "matrix" object corresponding to DistanceMatrix[,colIdx]
+// subsetColsCpp(): Extracting a distance "matrix" object corresponding to DistanceMatrix[,colIdx]
 // [[Rcpp::export]]
-NumericMatrix subsetColsDist2MatCpp(const NumericVector &dist, const IntegerVector &colIdx){
+NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colIdx){
 
   int N = dist.attr("Size");
   int nc = colIdx.size();
@@ -92,8 +94,7 @@ NumericMatrix subsetColsDist2MatCpp(const NumericVector &dist, const IntegerVect
       subdmatptr[l++] = distptr[indexing(N,colIdx[j],i)];
     }
 
-    subdmatptr[l] = 0;
-    l++;
+    subdmatptr[l++] = 0;
 
     for(int k = (colIdx[j]+1); k < N; k++){
       subdmatptr[l++] = distptr[m];

@@ -38,15 +38,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// subsetColsDist2MatCpp
-NumericMatrix subsetColsDist2MatCpp(const NumericVector& dist, const IntegerVector& colIdx);
-RcppExport SEXP _dissimilarities_subsetColsDist2MatCpp(SEXP distSEXP, SEXP colIdxSEXP) {
+// subsetColsCpp
+NumericMatrix subsetColsCpp(const NumericVector& dist, const IntegerVector& colIdx);
+RcppExport SEXP _dissimilarities_subsetColsCpp(SEXP distSEXP, SEXP colIdxSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const NumericVector& >::type dist(distSEXP);
     Rcpp::traits::input_parameter< const IntegerVector& >::type colIdx(colIdxSEXP);
-    rcpp_result_gen = Rcpp::wrap(subsetColsDist2MatCpp(dist, colIdx));
+    rcpp_result_gen = Rcpp::wrap(subsetColsCpp(dist, colIdx));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -94,7 +94,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_dissimilarities_subsetDist2DistCpp", (DL_FUNC) &_dissimilarities_subsetDist2DistCpp, 4},
     {"_dissimilarities_subsetDist2MatCpp", (DL_FUNC) &_dissimilarities_subsetDist2MatCpp, 3},
-    {"_dissimilarities_subsetColsDist2MatCpp", (DL_FUNC) &_dissimilarities_subsetColsDist2MatCpp, 2},
+    {"_dissimilarities_subsetColsCpp", (DL_FUNC) &_dissimilarities_subsetColsCpp, 2},
     {"_dissimilarities_Dist2MatCpp", (DL_FUNC) &_dissimilarities_Dist2MatCpp, 1},
     {"_dissimilarities_fastDistCpp", (DL_FUNC) &_dissimilarities_fastDistCpp, 5},
     {"_dissimilarities_fastDistABCpp", (DL_FUNC) &_dissimilarities_fastDistABCpp, 4},
