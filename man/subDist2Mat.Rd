@@ -34,7 +34,7 @@ microbenchmark(base::as.matrix(dx)[idx1,idx2],
                proxy::as.matrix(dx)[idx1,idx2],
                subDist2Mat(dx, idx1, idx2))
 #Check if equal
-all.equal(base::as.matrix(dx)[idx1,idx2], subDist2Mat(dx, idx1, idx2))
+all.equal(as.vector(base::as.matrix(dx)[idx1,idx2]), as.vector(subDist2Mat(dx, idx1, idx2)))
 
 }
 \author{

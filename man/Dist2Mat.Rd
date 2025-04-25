@@ -28,7 +28,7 @@ microbenchmark(base::as.matrix(dx),
                proxy::as.matrix(dx),
                Dist2Mat(dx))
 #Check if equal
-all.equal(base::as.matrix(dx), Dist2Mat(dx))
+all.equal(as.vector(base::as.matrix(dx)), as.vector(Dist2Mat(dx)))
 
 }
 \author{
