@@ -27,22 +27,23 @@ BEGIN_RCPP
 END_RCPP
 }
 // fastDistABCpp
-NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method);
-RcppExport SEXP _dissimilarities_fastDistABCpp(SEXP ASEXP, SEXP BSEXP, SEXP methodSEXP) {
+NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method, int p);
+RcppExport SEXP _dissimilarities_fastDistABCpp(SEXP ASEXP, SEXP BSEXP, SEXP methodSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const NumericMatrix& >::type A(ASEXP);
     Rcpp::traits::input_parameter< const NumericMatrix& >::type B(BSEXP);
     Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
-    rcpp_result_gen = Rcpp::wrap(fastDistABCpp(A, B, method));
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(fastDistABCpp(A, B, method, p));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_dissimilarities_fastDistCpp", (DL_FUNC) &_dissimilarities_fastDistCpp, 5},
-    {"_dissimilarities_fastDistABCpp", (DL_FUNC) &_dissimilarities_fastDistABCpp, 3},
+    {"_dissimilarities_fastDistABCpp", (DL_FUNC) &_dissimilarities_fastDistABCpp, 4},
     {NULL, NULL, 0}
 };
 
