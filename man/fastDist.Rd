@@ -4,7 +4,7 @@
 \alias{fastDist}
 \title{"dist" object computation}
 \usage{
-fastDist(X, method = "euclidean", diag = F, upper = F, p = 2)
+fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 }
 \arguments{
 \item{X}{A numeric matrix.}
@@ -31,11 +31,8 @@ This function computes a distance matrix of class "dist", consisting of pair-wis
 library("microbenchmark")
 x = matrix(rnorm(200), nrow = 50)
 microbenchmark(stats::dist(x, method = "minkowski", p = 5),
-               proxy::dist(x, method = "minkowski", p = 5),
-               fastDist(x, method = "minkowski", p = 5),
-               times = 100)
-#Check if equal
-all.equal(as.vector(stats::dist(x, method = "minkowski", p = 5)), as.vector(fastDist(x, method = "minkowski", p = 5)))
+               fastDist(x, method = "minkowski", p = 5))
+all.equal(stats::dist(x, method = "minkowski", p = 5), fastDist(x, method = "minkowski", p = 5))
 
 }
 \author{
