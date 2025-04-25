@@ -80,7 +80,7 @@ NumericMatrix subsetColsDist2MatCpp(const NumericVector &dist, const IntegerVect
   int nc = colIdx.size();
   NumericMatrix subdmat(N,nc);
   double* subdmatptr = &subdmat(0, 0);
-
+  double* distptr = REAL(dist);
 
   int m;
   int l = 0;
@@ -89,14 +89,14 @@ NumericMatrix subsetColsDist2MatCpp(const NumericVector &dist, const IntegerVect
     m = indexing(N, colIdx[j]+1, colIdx[j]);
 
     for(int i = 0; i < colIdx[j]; i++){
-      subdmat[l++] = dist[indexing(N,colIdx[j],i)];
+      subdmatptr[l++] = distptr[indexing(N,colIdx[j],i)];
     }
 
-    subdmat[l] = 0;
+    subdmatptr[l] = 0;
     l++;
 
     for(int k = (colIdx[j]+1); k < N; k++){
-      subdmat[l++] = dist[m];
+      subdmatptr[l++] = distptr[m];
       m++;
     }
   }

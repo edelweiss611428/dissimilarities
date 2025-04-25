@@ -9,8 +9,8 @@ subsetDist2MatCpp <- function(dist, idx1, idx2) {
     .Call(`_dissimilarities_subsetDist2MatCpp`, dist, idx1, idx2)
 }
 
-getColsCpp <- function(dist, colIdx) {
-    .Call(`_dissimilarities_getColsCpp`, dist, colIdx)
+subsetColsDist2MatCpp <- function(dist, colIdx) {
+    .Call(`_dissimilarities_subsetColsDist2MatCpp`, dist, colIdx)
 }
 
 Dist2MatCpp <- function(dist) {
