@@ -14,7 +14,12 @@ devtools::document()
 devtools::load_all()
 
 set.seed(1)
-X = matrix(rnorm(100000), nrow = 10)
+X = matrix(rnorm(10000), nrow = 1000)
+microbenchmark(fastDist(X, ),
+               stats::dist(X), times = 10)
+
+as.vector(fastDist(X))
+as.vector(stats::dist(X))
 
 library("proxy")
 library("microbenchmark")

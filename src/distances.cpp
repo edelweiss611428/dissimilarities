@@ -5,9 +5,6 @@ double manhattanCpp(const arma::rowvec& x, const arma::rowvec& y){
   return arma::norm(x - y, 1);
 };
 
-double euclideanCpp(const arma::rowvec& x, const arma::rowvec& y){
-  return arma::norm(x - y, 2);
-};
 
 double maximumCpp(const arma::rowvec& x, const arma::rowvec& y){
   return arma::norm(x - y, "inf");
@@ -16,6 +13,7 @@ double maximumCpp(const arma::rowvec& x, const arma::rowvec& y){
 
 double canberraCpp(const arma::rowvec& x, const arma::rowvec& y){
   double dist = 0.0;
+
   for (int i = 0; i < x.n_elem; i++) {
     double n = std::abs(x(i) - y(i));
     double d = std::abs(x(i)) + std::abs(y(i));
@@ -23,6 +21,7 @@ double canberraCpp(const arma::rowvec& x, const arma::rowvec& y){
       dist += n/d;
     }
   }
+
   return dist;
 };
 
