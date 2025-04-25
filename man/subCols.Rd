@@ -18,7 +18,7 @@ A matrix storing pairwise distances between pairs in idx1 x idx2.
 This function efficiently subsets a "dist" object by column to a smaller distance "matrix".
 }
 \details{
-Lorem ipsum.
+This function efficiently extracts columns from a "dist" object without involving unnecessary conversion (to a full data matrix), thereby improving efficiency and memory usage.
 }
 \examples{
 
@@ -29,8 +29,7 @@ dx = dist(x)
 idx = sample(1:50, 10)
 microbenchmark(base::as.matrix(dx)[1:50,idx],
                proxy::as.matrix(dx)[1:50,idx],
-               subCols(dx, idx),
-               times = 100)
+               subCols(dx, idx))
 #Check if equal
 all.equal(as.vector(base::as.matrix(dx)[1:50,idx]), as.vector(subCols(dx, idx)))
 

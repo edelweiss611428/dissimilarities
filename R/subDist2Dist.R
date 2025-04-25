@@ -10,10 +10,11 @@
 #' @param diag A boolean value, indicating whether to display the diagonal entries.
 #' @param upper A boolean value, indicating whether to display the upper triangular entries.
 #'
-#' @details Lorem ipsum.
+#' @details This function efficiently subsets a "dist" object to a smaller "dist" object, which is useful for constructing subsetting-based clustering algorithms. It does not involve conversion of the original "dist" object to a numeric matrix, thereby reducing memory usage and improving computational efficiency.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
+#' @importFrom stats na.fail
 #' @return A subsetted "dist" object.
 #'
 #' @examples
@@ -24,10 +25,9 @@
 #' #Subsetting the first 10 units
 #' microbenchmark(as.dist(base::as.matrix(dx)[1:10,1:10]),
 #'                as.dist(proxy::as.matrix(dx)[1:10,1:10]),
-#'                subDist2Dist(dx, 1:10),
-#'                times = 100)
+#'                subDist2Dist(dx, 1:10))
 #' #Check if equal
-#' all.equal(as.vector(as.dist(base::as.matrix(dx)[1:10,1:10])), as.vector(subDist2Dist(dx, 1:10)))
+#' all.equal(as.dist(base::as.matrix(dx)[1:10,1:10]), subDist2Dist(dx, 1:10))
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export

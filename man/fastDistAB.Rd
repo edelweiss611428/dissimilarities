@@ -4,7 +4,7 @@
 \alias{fastDistAB}
 \title{Pairwise distances between rows of two matrices}
 \usage{
-fastDistAB(A, B, p = 2)
+fastDistAB(A, B, method, p = 2)
 }
 \arguments{
 \item{A}{A numeric matrix.}
@@ -22,16 +22,17 @@ A matrix storing pairwise distances between rows of A and B.
 This function efficiently computes pairwise distances between rows of two numeric matrices.
 }
 \details{
-Lorem ipsum.
+This function computes a distance "matrix" storing pairwise distances between rows of two numeric matrices A and B.
 }
 \examples{
 
 library("microbenchmark")
-A = matrix(rnorm(200), nrow = 50)
-B = matrix(rnorm(200), nrow = 50)
-microbenchmark(proxy::dist(A,B, method = "minkowski", p = 5),
-               fastDistAB(A,B, method = "minkowski", p = 5))
-
+X = matrix(rnorm(200), nrow = 50)
+A = X[1:25,]
+B = X[26:50,]
+microbenchmark(proxy::dist(A,B, "minkowski", p = 5L),
+               fastDistAB(A,B, "minkowski", p = 5L))
+all.equal(proxy::dist(A,B, "minkowski", 5L), fastDistAB(A,B, "minkowski", p = 5L))
 }
 \author{
 Minh Long Nguyen \email{edelweiss611428@gmail.com}

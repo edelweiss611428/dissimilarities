@@ -20,7 +20,7 @@ A matrix storing pairwise distances between pairs in idx1 x idx2.
 This function efficiently subsets a "dist" object to a smaller distance "matrix".
 }
 \details{
-Lorem ipsum.
+This function efficiently subsets a "dist" object to a smaller "matrix" based on row and column indices of the distance matrix. It does not involve conversion of the original "dist" object to a numeric matrix, thereby reducing memory usage and improving computational efficiency.
 }
 \examples{
 
@@ -32,10 +32,9 @@ idx1 = sample(1:50, 10)
 idx2 = sample(1:50, 10)
 microbenchmark(base::as.matrix(dx)[idx1,idx2],
                proxy::as.matrix(dx)[idx1,idx2],
-               subDist2Mat(dx, idx1, idx2),
-               times = 100)
+               subDist2Mat(dx, idx1, idx2))
 #Check if equal
-all.equal(as.vector(base::as.matrix(dx)[idx1,idx2]), as.vector(subDist2Mat(dx, idx1, idx2)))
+all.equal(base::as.matrix(dx)[idx1,idx2], subDist2Mat(dx, idx1, idx2))
 
 }
 \author{

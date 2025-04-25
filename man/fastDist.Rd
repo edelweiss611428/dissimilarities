@@ -30,9 +30,9 @@ This function computes a distance matrix of class "dist", consisting of pair-wis
 
 library("microbenchmark")
 x = matrix(rnorm(200), nrow = 50)
-microbenchmark(stats::dist(x, method = "minkowski", p = 5),
-               fastDist(x, method = "minkowski", p = 5))
-all.equal(stats::dist(x, method = "minkowski", p = 5), fastDist(x, method = "minkowski", p = 5))
+microbenchmark(stats::dist(x, "minkowski", p = 5),
+               fastDist(x, "minkowski", p = 5))
+all.equal(stats::dist(x, "minkowski", p = 5), fastDist(x, "minkowski", p = 5))
 
 }
 \author{

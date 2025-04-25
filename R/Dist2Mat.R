@@ -7,7 +7,7 @@
 #'
 #' @param dist A "dist" object, which can be computed via the stats::dist() function.
 #'
-#' @details Lorem ipsum.
+#' @details This function efficiently converts a "dist" object to a distance "matrix". It is faster than base::as.matrix() and proxy::as.matrix().
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
@@ -21,10 +21,9 @@
 #' #Dist2Mat conversion
 #' microbenchmark(base::as.matrix(dx),
 #'                proxy::as.matrix(dx),
-#'                Dist2Mat(dx),
-#'                times = 100)
+#'                Dist2Mat(dx))
 #' #Check if equal
-#' all.equal(as.vector(base::as.matrix(dx)), as.vector(Dist2Mat(dx)))
+#' all.equal(base::as.matrix(dx), Dist2Mat(dx))
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export

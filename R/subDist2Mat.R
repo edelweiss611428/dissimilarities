@@ -9,10 +9,11 @@
 #' @param idx1 An integer vector, specifying the row indices of the subsetted matrix.
 #' @param idx2 An integer vector, specifying the column indices of the subsetted matrix.
 #'
-#' @details Lorem ipsum.
+#' @details This function efficiently subsets a "dist" object to a smaller "matrix" based on row and column indices of the distance matrix. It does not involve conversion of the original "dist" object to a numeric matrix, thereby reducing memory usage and improving computational efficiency.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
+#' @importFrom stats na.fail
 #' @return A matrix storing pairwise distances between pairs in idx1 x idx2.
 #'
 #' @examples
@@ -25,10 +26,9 @@
 #' idx2 = sample(1:50, 10)
 #' microbenchmark(base::as.matrix(dx)[idx1,idx2],
 #'                proxy::as.matrix(dx)[idx1,idx2],
-#'                subDist2Mat(dx, idx1, idx2),
-#'                times = 100)
+#'                subDist2Mat(dx, idx1, idx2))
 #' #Check if equal
-#' all.equal(as.vector(base::as.matrix(dx)[idx1,idx2]), as.vector(subDist2Mat(dx, idx1, idx2)))
+#' all.equal(base::as.matrix(dx)[idx1,idx2], subDist2Mat(dx, idx1, idx2))
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
@@ -46,6 +46,7 @@ subDist2Mat = function(dist, idx1, idx2){
   } else{
     idx1 = as.integer(idx1)
     if(max(idx1) > N | min(idx1) < 1){
+      na.fail(idx1)
       stop("idx1 not in range [1,N]")
     }
   }
@@ -53,6 +54,7 @@ subDist2Mat = function(dist, idx1, idx2){
   if(!is.numeric(idx2)){
     stop("Numeric idx2 is required!")
   } else{
+    na.fail(idx2)
     idx2 = as.integer(idx2)
     if(max(idx2) > N | min(idx2) < 1){
       stop("idx2 not in range [1,N]")

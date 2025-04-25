@@ -15,15 +15,16 @@
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy dist
+#' @importFrom stats na.fail
 #' @return A distance matrix of class "dist".
 #'
 #' @examples
 #'
 #' library("microbenchmark")
 #' x = matrix(rnorm(200), nrow = 50)
-#' microbenchmark(stats::dist(x, method = "minkowski", p = 5),
-#'                fastDist(x, method = "minkowski", p = 5))
-#' all.equal(stats::dist(x, method = "minkowski", p = 5), fastDist(x, method = "minkowski", p = 5))
+#' microbenchmark(stats::dist(x, "minkowski", p = 5),
+#'                fastDist(x, "minkowski", p = 5))
+#' all.equal(stats::dist(x, "minkowski", p = 5), fastDist(x, "minkowski", p = 5))
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
@@ -39,9 +40,7 @@ fastDist = function(X, method = "euclidean", diag = F, upper = F, p = 2L){
   if(!is.matrix(X) | !is.numeric(X)){
     stop("X must be a numeric matrix!")
   } else{
-    if(is.na(X)){
-      stop("X contains NA elements!")
-    }
+    na.fail(X)
   }
 
   if(length(method) != 1 |!is.character(method)){

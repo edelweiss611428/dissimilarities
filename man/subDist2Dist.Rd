@@ -22,7 +22,7 @@ A subsetted "dist" object.
 This function efficiently subsets a "dist" object to a smaller "dist" object.
 }
 \details{
-Lorem ipsum.
+This function efficiently subsets a "dist" object to a smaller "dist" object, which is useful for constructing subsetting-based clustering algorithms. It does not involve conversion of the original "dist" object to a numeric matrix, thereby reducing memory usage and improving computational efficiency.
 }
 \examples{
 
@@ -32,10 +32,9 @@ dx = dist(x)
 #Subsetting the first 10 units
 microbenchmark(as.dist(base::as.matrix(dx)[1:10,1:10]),
                as.dist(proxy::as.matrix(dx)[1:10,1:10]),
-               subDist2Dist(dx, 1:10),
-               times = 100)
+               subDist2Dist(dx, 1:10))
 #Check if equal
-all.equal(as.vector(as.dist(base::as.matrix(dx)[1:10,1:10])), as.vector(subDist2Dist(dx, 1:10)))
+all.equal(as.dist(base::as.matrix(dx)[1:10,1:10]), subDist2Dist(dx, 1:10))
 
 }
 \author{

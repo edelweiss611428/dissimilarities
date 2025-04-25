@@ -16,7 +16,7 @@ A distance "matrix".
 This function efficiently converts a "dist" object to a distance "matrix".
 }
 \details{
-Lorem ipsum.
+This function efficiently converts a "dist" object to a distance "matrix". It is faster than base::as.matrix() and proxy::as.matrix().
 }
 \examples{
 
@@ -26,10 +26,9 @@ dx = dist(x)
 #Dist2Mat conversion
 microbenchmark(base::as.matrix(dx),
                proxy::as.matrix(dx),
-               Dist2Mat(dx),
-               times = 100)
+               Dist2Mat(dx))
 #Check if equal
-all.equal(as.vector(base::as.matrix(dx)), as.vector(Dist2Mat(dx)))
+all.equal(base::as.matrix(dx), Dist2Mat(dx))
 
 }
 \author{
