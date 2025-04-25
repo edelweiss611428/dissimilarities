@@ -1,3 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
 useDynLib(dissimilarities, .registration = TRUE)
+importFrom(microbenchmark, microbenchmark)
+importFrom(proxy, as.matrix)

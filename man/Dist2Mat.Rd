@@ -10,7 +10,7 @@ Dist2Mat(dist)
 \item{dist}{A "dist" object, which can be computed via the stats::dist() function.}
 }
 \value{
-a distance "matrix"
+A distance "matrix".
 }
 \description{
 This function efficiently converts a "dist" object to a distance "matrix".
@@ -19,13 +19,15 @@ This function efficiently converts a "dist" object to a distance "matrix".
 Lorem ipsum.
 }
 \examples{
+
+library("microbenchmark")
 x = matrix(rnorm(200), nrow = 50)
 dx = dist(x)
 #Dist2Mat conversion
-microbenchmark::microbenchmark(base::as.matrix(dx),
-                               proxy::as.matrix(dx),
-                               Dist2Mat(dx),
-                               times = 100)
+microbenchmark(base::as.matrix(dx),
+               proxy::as.matrix(dx),
+               Dist2Mat(dx),
+               times = 100)
 #Check if equal
 all.equal(as.vector(base::as.matrix(dx)), as.vector(Dist2Mat(dx)))
 
