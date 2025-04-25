@@ -20,7 +20,7 @@ inline int indexing(int nr, int i, int j){
 }
 
 // subsetDist2DistCpp(): Extracting a "dist" object corresponding to DistanceMatrix[idx,idx].
-// [[Rcpp::export]]
+// [[Rcpp::export(.subsetDist2DistCpp)]]
 NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector & idx,
                                  bool diag = false, bool upper = false){
   int N = dist.attr("Size");
@@ -47,7 +47,7 @@ NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector 
 
 
 // subsetDist2MatCpp(): Extracting a distance "matrix" object corresponding to DistanceMatrix[idx1,idx2]
-// [[Rcpp::export]]
+// [[Rcpp::export(.subsetDist2MatCpp)]]
 NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &idx1, const IntegerVector &idx2){
 
   int N = dist.attr("Size");
@@ -73,9 +73,8 @@ NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &
 
 }
 
-
 // subsetColsCpp(): Extracting a distance "matrix" object corresponding to DistanceMatrix[,colIdx]
-// [[Rcpp::export]]
+// [[Rcpp::export(.subsetColsCpp)]]
 NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colIdx){
 
   int N = dist.attr("Size");
@@ -106,7 +105,7 @@ NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colI
 
 
 // Dist2MatCpp(): Converting a "dist" object to a distance "matrix" object
-// [[Rcpp::export]]
+// [[Rcpp::export(.Dist2MatCpp)]]
 NumericMatrix Dist2MatCpp(const NumericVector &dist){
 
   int N = dist.attr("Size");

@@ -93,8 +93,8 @@ inline double cosineCpp(const double* xi, const double* xj, int nr1, int nr2, in
 };
 
 
-// fastDistABCpp(): Compute a pair-wise distance matrix of class "dist"
-// [[Rcpp::export]]
+// fastDistCpp(): Compute a pair-wise distance matrix of class "dist"
+// [[Rcpp::export(.fastDistCpp)]]
 NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidean",
                        bool diag  = false, bool upper = false, int p = 2){
   const int nr   = X.nrow();
@@ -186,7 +186,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
 
 // fastDistABCpp(): Compute a pair-wise  distance matrix of class "Matrix" from two matrices.
-// [[Rcpp::export]]
+// [[Rcpp::export(.fastDistABCpp)]]
 NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method = "euclidean",
                             int p = 2){
   const int nA   = A.nrow();
