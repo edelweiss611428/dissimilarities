@@ -3,30 +3,30 @@ library("RcppArmadillo")
 library("devtools")
 library("roxygen2")
 library("microbenchmark")
+library("proxy")
 
-usethis::use_package("RcppArmadillo", type = "linkingto")
-usethis::use_package("Rcpp", type = "linkingto")
-usethis::use_package("Rcpp", type = "import")
-renv::snapshot()
-renv::status()
+#
+# usethis::use_package("RcppArmadillo", type = "linkingto")
+# usethis::use_package("Rcpp", type = "linkingto")
+# usethis::use_package("Rcpp", type = "import")
+# renv::snapshot()
+# renv::status()
 
 devtools::document()
 devtools::load_all()
 
 set.seed(1)
-X = matrix(rnorm(100000), nrow = 10)
-microbenchmark(fastDist(X, ),
-               stats::dist(X), times = 10)
-
-as.vector(fastDist(X))
-as.vector(stats::dist(X))
-
-library("proxy")
-library("microbenchmark")
-
-dissimilarities::dist(X)
+X = matrix(rnorm(10000), nrow = 100)
 
 
-microbenchmark(dissimilarities::dist(X),
-               stats::dist(X))
 
+microbenchmark(fastDist(X, method = "minkowski", p = 5),
+               stats::dist(X, method = "minkowski", p = 5),
+               proxy::dist(X, method = "minkowski", p = 5),
+               is.na(X),
+               times = 100)
+
+X = matrix(rnorm(9), nrow = 3)
+
+x1 = as.vector(fastDist(X, method = "cosine"))
+x2 = as.vector(proxy::dist(X, method = "cosine"))
