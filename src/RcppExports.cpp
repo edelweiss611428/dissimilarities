@@ -12,13 +12,13 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // subsetDist2DistCpp
-NumericVector subsetDist2DistCpp(NumericVector dist, IntegerVector idx, bool diag, bool upper);
+NumericVector subsetDist2DistCpp(const NumericVector& dist, const IntegerVector& idx, bool diag, bool upper);
 RcppExport SEXP _dissimilarities_subsetDist2DistCpp(SEXP distSEXP, SEXP idxSEXP, SEXP diagSEXP, SEXP upperSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type idx(idxSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type idx(idxSEXP);
     Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
     Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
     rcpp_result_gen = Rcpp::wrap(subsetDist2DistCpp(dist, idx, diag, upper));
@@ -26,37 +26,37 @@ BEGIN_RCPP
 END_RCPP
 }
 // subsetDist2MatCpp
-NumericMatrix subsetDist2MatCpp(NumericVector dist, IntegerVector idx1, IntegerVector idx2);
+NumericMatrix subsetDist2MatCpp(const NumericVector& dist, const IntegerVector& idx1, const IntegerVector& idx2);
 RcppExport SEXP _dissimilarities_subsetDist2MatCpp(SEXP distSEXP, SEXP idx1SEXP, SEXP idx2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type idx1(idx1SEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type idx2(idx2SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type idx1(idx1SEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type idx2(idx2SEXP);
     rcpp_result_gen = Rcpp::wrap(subsetDist2MatCpp(dist, idx1, idx2));
     return rcpp_result_gen;
 END_RCPP
 }
 // getColsCpp
-NumericMatrix getColsCpp(NumericVector dist, IntegerVector colIdx);
+NumericMatrix getColsCpp(const NumericVector& dist, const IntegerVector& colIdx);
 RcppExport SEXP _dissimilarities_getColsCpp(SEXP distSEXP, SEXP colIdxSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type colIdx(colIdxSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type colIdx(colIdxSEXP);
     rcpp_result_gen = Rcpp::wrap(getColsCpp(dist, colIdx));
     return rcpp_result_gen;
 END_RCPP
 }
 // Dist2MatCpp
-NumericMatrix Dist2MatCpp(NumericVector dist);
+NumericMatrix Dist2MatCpp(const NumericVector& dist);
 RcppExport SEXP _dissimilarities_Dist2MatCpp(SEXP distSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type dist(distSEXP);
     rcpp_result_gen = Rcpp::wrap(Dist2MatCpp(dist));
     return rcpp_result_gen;
 END_RCPP
