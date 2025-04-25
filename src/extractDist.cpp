@@ -45,7 +45,6 @@ NumericVector subsetDist2DistCpp(NumericVector dist, IntegerVector idx,
 }
 
 
-
 // subsetDist2MatCpp(): Extracting a "Matrix" object corresponding to DataMatrix[idx1,idx2]
 // [[Rcpp::export]]
 NumericVector subsetDist2MatCpp(NumericVector dist, IntegerVector idx1, IntegerVector idx2,
