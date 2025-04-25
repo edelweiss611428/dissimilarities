@@ -14,7 +14,7 @@ subDist2Mat(dist, idx1, idx2)
 \item{idx2}{An integer vector, specifying the column indices of the subsetted matrix.}
 }
 \value{
-A matrix storing pairwise distances between pairs in {idx1 x idx2}.
+A matrix storing pairwise distances between pairs in idx1 x idx2.
 }
 \description{
 This function efficiently subsets a "dist" object to a smaller distance "matrix".

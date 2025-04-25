@@ -13,7 +13,7 @@
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
-#' @return A matrix storing pairwise distances between pairs in {idx1 x idx2}.
+#' @return A matrix storing pairwise distances between pairs in idx1 x idx2.
 #'
 #' @examples
 #'
@@ -41,11 +41,6 @@ subDist2Mat = function(dist, idx1, idx2){
 
   N = attr(dist, "Size")
 
-  if(length(diag) != 1 | length(upper) != 1 |
-     !is.logical(diag) | !is.logical(upper)){
-    stop("Invalid (diag, upper) option!")
-  }
-
   if(!is.numeric(idx1) | max(idx1) > N | min(idx1) < 1){
     stop("Invalid idx1!")
   }
@@ -55,7 +50,8 @@ subDist2Mat = function(dist, idx1, idx2){
   }
 
 
-  idx = as.integer(idx)
+  idx1 = as.integer(idx1)
+  idx2 = as.integer(idx2)
 
   return(.subsetDist2MatCpp(dist, idx1-1L, idx2-1L))
 
