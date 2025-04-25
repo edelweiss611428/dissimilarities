@@ -14,7 +14,7 @@ The current version includes the following features:
 
 Features under development:
 
-- Additional distance functions in fastDist and fastDistAB.
+- Providing additional distance functions in fastDist and fastDistAB.
 - expandDist: Expanding a "dist" object given new data.
 
  ### Installation
