@@ -5,8 +5,16 @@ subsetDist2DistCpp <- function(dist, idx, diag = FALSE, upper = FALSE) {
     .Call(`_dissimilarities_subsetDist2DistCpp`, dist, idx, diag, upper)
 }
 
-subsetDist2MatCpp <- function(dist, idx1, idx2, diag = FALSE, upper = FALSE) {
-    .Call(`_dissimilarities_subsetDist2MatCpp`, dist, idx1, idx2, diag, upper)
+subsetDist2MatCpp <- function(dist, idx1, idx2) {
+    .Call(`_dissimilarities_subsetDist2MatCpp`, dist, idx1, idx2)
+}
+
+getColsCpp <- function(dist, colIdx) {
+    .Call(`_dissimilarities_getColsCpp`, dist, colIdx)
+}
+
+Dist2MatCpp <- function(dist) {
+    .Call(`_dissimilarities_Dist2MatCpp`, dist)
 }
 
 fastDistCpp <- function(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L) {
