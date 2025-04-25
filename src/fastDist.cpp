@@ -190,3 +190,95 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 }
 
 
+
+// [[Rcpp::export]]
+NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method = "euclidean",
+                            int p = 2){
+  const int nA   = A.nrow();
+  const int nB   = B.nrow();
+  int d = A.ncol();
+
+  if (B.ncol() != d)
+    stop("Number of columns must match");
+
+  NumericMatrix out(nA, nB);
+  const double* Aptr = REAL(A);
+  const double* Bptr = REAL(B);
+  double* optr = REAL(out);
+
+  const double* Ai;
+  const double* Bj;
+
+  if(method == "euclidean"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = euclideanCpp(Ai, Bj, nA, nB, d);
+      }
+    }
+
+  } else if (method == "manhattan"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = manhattanCpp(Ai, Bj, nA, nB, d);
+      }
+    }
+
+  } else if (method == "minkowski"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = minkowskiCpp(Ai, Bj, nA, nB, d, p);
+      }
+    }
+
+  } else if (method == "maximum"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = chebyshevCpp(Ai, Bj, nA, nB, d);
+      }
+    }
+
+  } else if (method == "canberra"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = canberraCpp(Ai, Bj, nA, nB, d);
+      }
+    }
+
+  } else if (method == "cosine"){
+
+    for (int i = 0; i < nA; ++i) {
+      Ai = Aptr + i;  // start of row i in A
+      for (int j = 0; j < nB; ++j) {
+        Bj = Bptr + j;
+        optr[j*nA+i] = cosineCpp(Ai, Bj, nA, nB, d);
+      }
+    }
+
+  } else {
+    Rcpp::stop("Method is not supported!");
+  }
+
+  return out;
+}
+
+
+
+
+
+
+

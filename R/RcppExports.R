@@ -5,3 +5,7 @@ fastDistCpp <- function(X, method = "euclidean", diag = FALSE, upper = FALSE, p 
     .Call(`_dissimilarities_fastDistCpp`, X, method, diag, upper, p)
 }
 
+fastDistABCpp <- function(A, B, method = "euclidean") {
+    .Call(`_dissimilarities_fastDistABCpp`, A, B, method)
+}
+
