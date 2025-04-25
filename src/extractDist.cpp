@@ -1,12 +1,9 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+// indexing(): Convert 2d index to 1d index
 
-using namespace Rcpp;
-
-// indexing(): Convert 2d index to 1d index to extract elements from dist objects
-
-int indexing(int N, int i, int j){
+int indexing(int nr, int i, int j){
 
   if(i == j){
     return NumericVector::get_na();
@@ -19,7 +16,7 @@ int indexing(int N, int i, int j){
     j = temp;
   }
 
-  return ((2*N-1-j)*j >> 1) - 1 +(i-j);
+  return ((2*nr-1-j)*j >> 1) - 1 +(i-j);
 }
 
 // subDistCpp(): Extract a sub-distance matrix from a "dist" object
