@@ -11,9 +11,9 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// fastDist
-NumericVector fastDist(const NumericMatrix& X, std::string method, bool diag, bool upper, int p);
-RcppExport SEXP _dissimilarities_fastDist(SEXP XSEXP, SEXP methodSEXP, SEXP diagSEXP, SEXP upperSEXP, SEXP pSEXP) {
+// fastDistCpp
+NumericVector fastDistCpp(const NumericMatrix& X, std::string method, bool diag, bool upper, int p);
+RcppExport SEXP _dissimilarities_fastDistCpp(SEXP XSEXP, SEXP methodSEXP, SEXP diagSEXP, SEXP upperSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,13 +22,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
     Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
     Rcpp::traits::input_parameter< int >::type p(pSEXP);
-    rcpp_result_gen = Rcpp::wrap(fastDist(X, method, diag, upper, p));
+    rcpp_result_gen = Rcpp::wrap(fastDistCpp(X, method, diag, upper, p));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_dissimilarities_fastDist", (DL_FUNC) &_dissimilarities_fastDist, 5},
+    {"_dissimilarities_fastDistCpp", (DL_FUNC) &_dissimilarities_fastDistCpp, 5},
     {NULL, NULL, 0}
 };
 
