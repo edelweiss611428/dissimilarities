@@ -24,7 +24,7 @@ inline double manhattanCpp(const double* xi, const double* xj, int nr1, int nr2,
     sum += std::abs(*xi - *xj);
   }
 
-  return std::sqrt(sum);
+  return sum;
 };
 
 inline double minkowskiCpp(const double* xi, const double* xj, int nr1, int nr2, int nc, int p) {
