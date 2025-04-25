@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Minh Long, Nguyen
 Maintainer: Minh Long, Nguyen <edelweiss611428@gmail.com>
 Description: This package provides efficient functions for creating, manipulating, and subsetting "dist" objects in R—commonly used in cluster analysis. It enables users to work seamlessly with "dist" objects while minimising unnecessary conversions and overhead.
-License: MIT + file LICENSE
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 Imports: 
