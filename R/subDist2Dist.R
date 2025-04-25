@@ -45,11 +45,14 @@ subDist2Dist = function(dist, idx, diag = F, upper = F){
     stop("Invalid (diag, upper) option!")
   }
 
-  if(!is.numeric(idx) | max(idx) > N | min(idx) < 1){
-    stop("Invalid idx!")
+  if(!is.numeric(idx)){
+    stop("Numeric idx is required!")
+  } else{
+    idx = as.integer(idx)
+    if(max(idx) > N | min(idx) < 1){
+      stop("idx not in range [1,N]!")
+    }
   }
-
-  idx = as.integer(idx)
 
   return(.subsetDist2DistCpp(dist, idx - 1L, diag, upper))
 

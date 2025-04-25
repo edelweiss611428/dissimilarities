@@ -26,7 +26,7 @@ library("microbenchmark")
 x = matrix(rnorm(200), nrow = 50)
 dx = dist(x)
 #Randomly subsetting a 50x10 matrix
-idx1 = sample(1:50, 10)
+idx = sample(1:50, 10)
 microbenchmark(base::as.matrix(dx)[1:50,idx],
                proxy::as.matrix(dx)[1:50,idx],
                subCols(dx, idx),

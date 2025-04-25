@@ -20,7 +20,7 @@
 #' x = matrix(rnorm(200), nrow = 50)
 #' dx = dist(x)
 #' #Randomly subsetting a 50x10 matrix
-#' idx1 = sample(1:50, 10)
+#' idx = sample(1:50, 10)
 #' microbenchmark(base::as.matrix(dx)[1:50,idx],
 #'                proxy::as.matrix(dx)[1:50,idx],
 #'                subCols(dx, idx),
@@ -39,11 +39,14 @@ subCols = function(dist, idx){
 
   N = attr(dist, "Size")
 
-  if(!is.numeric(idx) | max(idx) > N | min(idx) < 1){
-    stop("Invalid idx!")
+  if(!is.numeric(idx)){
+    stop("Numeric idx is required!")
+  } else{
+    idx = as.integer(idx)
+    if(max(idx) > N | min(idx) < 1){
+      stop("idx not in range [1,N]!")
+    }
   }
-
-  idx = as.integer(idx)
 
   return(.subsetColsCpp(dist, idx - 1L))
 

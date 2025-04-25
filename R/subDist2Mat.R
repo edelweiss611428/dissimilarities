@@ -41,17 +41,23 @@ subDist2Mat = function(dist, idx1, idx2){
 
   N = attr(dist, "Size")
 
-  if(!is.numeric(idx1) | max(idx1) > N | min(idx1) < 1){
-    stop("Invalid idx1!")
+  if(!is.numeric(idx1)){
+    stop("Numeric idx1 is required!")
+  } else{
+    idx1 = as.integer(idx1)
+    if(max(idx1) > N | min(idx1) < 1){
+      stop("idx1 not in range [1,N]")
+    }
   }
 
-  if(!is.numeric(idx2) | max(idx2) > N | min(idx2) < 1){
-    stop("Invalid idx2!")
+  if(!is.numeric(idx2)){
+    stop("Numeric idx2 is required!")
+  } else{
+    idx2 = as.integer(idx2)
+    if(max(idx2) > N | min(idx2) < 1){
+      stop("idx2 not in range [1,N]")
+    }
   }
-
-
-  idx1 = as.integer(idx1)
-  idx2 = as.integer(idx2)
 
   return(.subsetDist2MatCpp(dist, idx1-1L, idx2-1L))
 
