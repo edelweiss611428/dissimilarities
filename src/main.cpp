@@ -3,30 +3,46 @@
 
 using namespace Rcpp;
 
-double euclideanCpp(const double* xi, const double* xj, int nr, int nc) {
 
-  double sumsq = 0.0;
+inline double euclideanCpp(const double* xi, const double* xj, int nr, int nc) {
+
+  double sum = 0.0;
   double d;
 
   for (int k = 0; k < nc; k++, xi += nr, xj += nr) {
     d = *xi - *xj;
-    sumsq += d * d;
+    sum += d * d;
   }
 
-  return std::sqrt(sumsq);
+  return std::sqrt(sum);
 };
 
-double minkowskiCpp(const double* xi, const double* xj, int nr, int nc, int p) {
+inline double manhattanCpp(const double* xi, const double* xj, int nr, int nc) {
 
-  double sumsq = 0.0;
-  double d;
+  double sum = 0.0;
 
   for (int k = 0; k < nc; k++, xi += nr, xj += nr) {
-    d = *xi - *xj;
-    sumsq += std::pow(std::abs(d), p);
+    sum += std::abs(*xi - *xj);
   }
 
-  return std::sqrt(sumsq);
+  return std::sqrt(sum);
+};
+
+inline double minkowskiCpp(const double* xi, const double* xj, int nr, int nc, int p) {
+
+  if(p == 2){
+    return euclideanCpp(xi, xj, nr, nc);
+  } else if (p == 1) {
+    return manhattanCpp(xi, xj, nr, nc);
+  }
+
+  double sum = 0.0;
+
+  for (int k = 0; k < nc; k++, xi += nr, xj += nr) {
+    sum += std::pow(std::abs(*xi - *xj), p);
+  }
+
+  return std::pow(sum, 1.0/p);
 };
 
 
@@ -45,28 +61,42 @@ NumericVector fastDist(const NumericMatrix& X, std::string method = "euclidean",
   const double* xi;
   const double* xj;
 
-  std::function<double(const double*, const double*)> distfn;
   int idx = 0;
 
-  if (method == "euclidean") {
-    distfn = [nr, nc](const double* xi, const double* xj){
-      return euclideanCpp(xi, xj, nr, nc);
-      };
-  } else if (method == "minkowski"){
-    distfn = [nr, nc, p](const double* xi, const double* xj){
-      return minkowskiCpp(xi, xj, nr, nc, p);
-      };
+  if(method == "euclidean"){
 
-    };
-
-  for (int i = 0; i < nr; ++i) {
-    xi = xptr + i;
-    for (int j = i+1; j < nr; ++j) {
-      xj = xptr + j;
-      // X(i,k) equiv to xptr[k*n + i],
-      optr[idx++] = distfn(xi, xj);
+    for (int i = 0; i < nr; ++i) {
+      xi = xptr + i;
+      for (int j = i+1; j < nr; ++j) {
+        xj = xptr + j;
+        // X(i,k) equiv to xptr[k*n + i],
+        optr[idx++] = euclideanCpp(xi, xj, nr, nc);
       }
     }
+
+  } else if (method == "manhattan"){
+
+    for (int i = 0; i < nr; ++i) {
+      xi = xptr + i;
+      for (int j = i+1; j < nr; ++j) {
+        xj = xptr + j;
+        // X(i,k) equiv to xptr[k*n + i],
+        optr[idx++] = manhattanCpp(xi, xj, nr, nc);
+      }
+    }
+
+  } else if (method == "minkowski"){
+
+    for (int i = 0; i < nr; ++i) {
+      xi = xptr + i;
+      for (int j = i+1; j < nr; ++j) {
+        xj = xptr + j;
+        // X(i,k) equiv to xptr[k*n + i],
+        optr[idx++] = minkowskiCpp(xi, xj, nr, nc, p);
+      }
+    }
+
+  }
 
   // dist attrs
   out.attr("Size")  = nr;
