@@ -93,7 +93,7 @@ inline double cosineCpp(const double* xi, const double* xj, int nr1, int nr2, in
 };
 
 
-
+// fastDistABCpp(): Compute a pair-wise distance matrix of class "dist"
 // [[Rcpp::export]]
 NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidean",
                        bool diag  = false, bool upper = false, int p = 2){
@@ -115,7 +115,6 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
         optr[idx++] = euclideanCpp(xi, xj, nr, nr, nc);
       }
     }
@@ -126,7 +125,6 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
         optr[idx++] = manhattanCpp(xi, xj, nr, nr, nc);
       }
     }
@@ -137,7 +135,6 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
         optr[idx++] = minkowskiCpp(xi, xj, nr, nr, nc, p);
       }
     }
@@ -148,7 +145,6 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
         optr[idx++] = chebyshevCpp(xi, xj, nr, nr, nc);
       }
     }
@@ -159,7 +155,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
+
         optr[idx++] = canberraCpp(xi, xj, nr, nr, nc);
       }
     }
@@ -170,7 +166,6 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
-        // X(i,k) equiv to xptr[k*n + i],
         optr[idx++] = cosineCpp(xi, xj, nr, nr, nc);
       }
     }
@@ -190,7 +185,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 }
 
 
-
+// fastDistABCpp(): Compute a pair-wise  distance matrix of class "Matrix" from two matrices.
 // [[Rcpp::export]]
 NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method = "euclidean",
                             int p = 2){

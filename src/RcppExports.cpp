@@ -11,6 +11,35 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// subsetDist2DistCpp
+NumericVector subsetDist2DistCpp(NumericVector dist, IntegerVector idx, bool diag, bool upper);
+RcppExport SEXP _dissimilarities_subsetDist2DistCpp(SEXP distSEXP, SEXP idxSEXP, SEXP diagSEXP, SEXP upperSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type idx(idxSEXP);
+    Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
+    Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
+    rcpp_result_gen = Rcpp::wrap(subsetDist2DistCpp(dist, idx, diag, upper));
+    return rcpp_result_gen;
+END_RCPP
+}
+// subsetDist2MatCpp
+NumericVector subsetDist2MatCpp(NumericVector dist, IntegerVector idx1, IntegerVector idx2, bool diag, bool upper);
+RcppExport SEXP _dissimilarities_subsetDist2MatCpp(SEXP distSEXP, SEXP idx1SEXP, SEXP idx2SEXP, SEXP diagSEXP, SEXP upperSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type idx1(idx1SEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type idx2(idx2SEXP);
+    Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
+    Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
+    rcpp_result_gen = Rcpp::wrap(subsetDist2MatCpp(dist, idx1, idx2, diag, upper));
+    return rcpp_result_gen;
+END_RCPP
+}
 // fastDistCpp
 NumericVector fastDistCpp(const NumericMatrix& X, std::string method, bool diag, bool upper, int p);
 RcppExport SEXP _dissimilarities_fastDistCpp(SEXP XSEXP, SEXP methodSEXP, SEXP diagSEXP, SEXP upperSEXP, SEXP pSEXP) {
@@ -42,6 +71,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_dissimilarities_subsetDist2DistCpp", (DL_FUNC) &_dissimilarities_subsetDist2DistCpp, 4},
+    {"_dissimilarities_subsetDist2MatCpp", (DL_FUNC) &_dissimilarities_subsetDist2MatCpp, 5},
     {"_dissimilarities_fastDistCpp", (DL_FUNC) &_dissimilarities_fastDistCpp, 5},
     {"_dissimilarities_fastDistABCpp", (DL_FUNC) &_dissimilarities_fastDistABCpp, 4},
     {NULL, NULL, 0}

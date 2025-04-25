@@ -1,12 +1,11 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// indexing(): Convert 2d index to 1d index
-
-int indexing(int nr, int i, int j){
+// indexing(): Convert a 2d index to an 1d index
+inline int indexing(int nr, int i, int j){
 
   if(i == j){
-    return NumericVector::get_na();
+    return 0;
   }
 
   if (i < j+1){
@@ -17,81 +16,59 @@ int indexing(int nr, int i, int j){
   }
 
   return ((2*nr-1-j)*j >> 1) - 1 +(i-j);
+
 }
 
-// subDistCpp(): Extract a sub-distance matrix from a "dist" object
-// [[Rcpp::export(.subDistCpp)]]
-NumericVector subDistCpp(NumericVector dist, IntegerVector idx, bool diag, bool upper, int N, int n){
-
-  NumericVector subDMat((n-1)*n >> 1);
-  int l = 0;
+// subsetDist2DistCpp(): Extracting a "dist" object corresponding to DataMatrix[idx,idx].
+// [[Rcpp::export]]
+NumericVector subsetDist2DistCpp(NumericVector dist, IntegerVector idx,
+                                 bool diag = false, bool upper = false){
+  int N = dist.attr("Size");
+  int n = idx.size();
+  NumericVector subdmat((n-1)*n >> 1);
+  int k = 0;
 
   for(int i = 0; i < n-1; i++){
     for(int j = (i+1); j < n; j++){
-      if(idx[i] == idx[j]){
-        subDMat[l] = 0;
-      } else{
-        subDMat[l] = dist[indexing(N, idx[i], idx[j])];
-      }
-      l++;
+      subdmat[k++] = dist[indexing(N, idx[i], idx[j])];
+      k++;
     }
   }
 
-  subDMat.attr("Size") = n;
-  subDMat.attr("Diag") = diag;
-  subDMat.attr("Upper") = upper;
-  subDMat.attr("class") = "dist";
+  subdmat.attr("Size") = n;
+  subdmat.attr("Diag") = diag;
+  subdmat.attr("Upper") = upper;
+  subdmat.attr("class") = "dist";
 
-  return subDMat;
+  return subdmat;
+
 }
 
-// extractDistCpp(): Subset a distance matrix
-// [[Rcpp::export(.extractDistCpp)]]
-NumericVector extractDistCpp(NumericVector dist, IntegerVector idx1, IntegerVector idx2, int N, int n1, int n2){
-  NumericVector extractedDist(n1*n2);
-  extractedDist.attr("dim") = Dimension(n1, n2);
 
-  int l = 0;
+
+// subsetDist2MatCpp(): Extracting a "Matrix" object corresponding to DataMatrix[idx1,idx2]
+// [[Rcpp::export]]
+NumericVector subsetDist2MatCpp(NumericVector dist, IntegerVector idx1, IntegerVector idx2,
+                                bool diag = false, bool upper = false){
+
+  int N = dist.attr("Size");
+  int n1 = idx1.size();
+  int n2 = idx2.size();
+  NumericVector subdmat(n1*n2);
+  subdmat.attr("dim") = Dimension(n1, n2);
+  int k = 0;
+
   for(int i=0; i<n2;i++){
     for(int j=0;j<n1;j++){
       if(idx2[i] == idx1[j]){
-        extractedDist[l] = 0;
+        subdmat[k] = 0;
       } else{
-        extractedDist[l] = dist[indexing(N,idx2[i],idx1[j])];
+        subdmat[k] = dist[indexing(N,idx2[i],idx1[j])];
       }
-      l++;
+      k++;
     }
   }
-  return extractedDist;
-}
 
+  return subdmat;
 
-
-
-// getColumnsCpp(): Extract columns (or rows) from a symmetric distance matrix
-// [[Rcpp::export(.getColumnsCpp)]]
-NumericMatrix getColumns(NumericVector dist, IntegerVector ColIdx, int N, int nCol){
-  NumericMatrix extractedDist(N,nCol);
-
-  int lTemp;
-  int l = 0;
-
-  for(int j = 0; j < nCol; j++){
-    lTemp = indexing(N, ColIdx[j]+1, ColIdx[j]);
-
-    for(int i = 0; i < ColIdx[j]; i++){
-      extractedDist[l] = dist[indexing(N,ColIdx[j],i)];
-      l++;
-    }
-
-    extractedDist[l] = 0;
-    l++;
-
-    for(int k = (ColIdx[j]+1); k < N; k++){
-      extractedDist[l] = dist[lTemp];
-      l++;
-      lTemp++;
-    }
-  }
-  return extractedDist;
 }
