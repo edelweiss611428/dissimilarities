@@ -1,21 +1,21 @@
 #' @name subDist2Dist
 #' @title Dist2Dist subsetting
 #'
-#' @description  Efficiently extracts a subset of observations from a `"dist"` object and returns a new `"dist"` object representing only the selected distances.
+#' @description  Efficiently extracts a subset of observations from a "dist" object and returns a new "dist" object representing only the selected distances.
 #'
 #' @usage subDist2Dist(dist, idx, diag = F, upper = F)
 #'
-#' @param dist A "dist" object, which can be computed via the [stats::dist] function, representing the full pairwise distance matrix between observations.
+#' @param dist A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.
 #' @param idx An integer vector, specifying the indices of the observations to retain.
 #' @param diag A boolean value, indicating whether to display the diagonal entries.
 #' @param upper A boolean value, indicating whether to display the upper triangular entries.
 #'
 #' @details
-#' This function subsets a `"dist"` object directly without explicit conversion to a dense distance `"matrix"`.
+#' This function subsets a "dist" object directly without explicit conversion to a dense distance "matrix".
 #' It extracts only the relevant distances corresponding to the selected indices, improving both performance and memory efficiency.
-#' The result is returned as a subsetted `"dist"` object, preserving compatibility with downstream functions that accept this class.
+#' The result is returned as a subsetted "dist" object, preserving compatibility with downstream functions that accept this class.
 #'
-#' @return A numeric `"matrix"` storing pairwise distances between the selected observations.
+#' @return A numeric "matrix" storing pairwise distances between the selected observations.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix

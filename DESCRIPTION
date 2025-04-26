@@ -1,6 +1,6 @@
 Package: dissimilarities
 Type: Package
-Title: Creating, Manipulating, and Subsetting 'dist' Objects
+Title: Creating, Manipulating, and Subsetting "dist" Objects
 Version: 0.1.0
 Authors@R: person(given = "Minh Long",
                   family = "Nguyen",

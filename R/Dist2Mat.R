@@ -1,19 +1,19 @@
 #' @name Dist2Mat
 #' @title Dist2Mat conversion
 #'
-#' @description  Efficiently converts a `"dist"` object into a symmetric distance `"matrix"`.
+#' @description  Efficiently converts a "dist" object into a symmetric distance "matrix".
 #'
 #' @usage Dist2Mat(dist)
 #'
-#' @param dist A `"dist"` object, which can be computed via the [stats::dist] function, representing pairwise distances between observations.
+#' @param dist A "dist" object, which can be computed via the stats::dist function, representing pairwise distances between observations.
 #'
-#' @details Converts a `"dist"` object, typically created using the [stats::dist] function, into a symmetric matrix form.
-#' This implementation is optimised for speed and performs significantly faster than [base::as.matrix] or [proxy::as.matrix]
-#' when applied to `"dist"` objects.
+#' @details Converts a "dist" object, typically created using the stats::dist function, into a symmetric matrix form.
+#' This implementation is optimised for speed and performs significantly faster than base::as.matrix or proxy::as.matrix
+#' when applied to "dist" objects.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
-#' @return A distance `"matrix"`.
+#' @return A distance "matrix".
 #'
 #' @examples
 #'

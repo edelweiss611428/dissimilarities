@@ -1,7 +1,7 @@
 #' @name fastDist
-#' @title `"dist"` object computation
+#' @title "dist" object computation
 #'
-#' @description  Efficiently computes a `"dist"` object from a numeric matrix using various distance metrics.
+#' @description  Efficiently computes a "dist" object from a numeric matrix using various distance metrics.
 #'
 #' @usage fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 #'
@@ -13,9 +13,9 @@
 #' @param p A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
 #'
 #' @details
-#' Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact `"dist"` object, which stores
-#' the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including `"euclidean"`,
-#' `"manhattan"`, `"maximum"`, `"minkowski"`, `"cosine"`, and `"canberra"`.
+#' Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact "dist" object, which stores
+#' the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including "euclidean",
+#' "manhattan", "maximum", "minkowski", "cosine", and "canberra".
 #'
 #' This implementation is optimised for speed, especially on large matrices.
 #'

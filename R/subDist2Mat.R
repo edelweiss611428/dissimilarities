@@ -1,17 +1,17 @@
 #' @name subDist2Mat
 #' @title Dist2Mat subsetting
 #'
-#' @description  Efficiently extracts a 2d submatrix of pairwise distances from a `"dist"` object.
+#' @description  Efficiently extracts a 2d submatrix of pairwise distances from a "dist" object.
 #'
 #' @usage subDist2Mat(dist, idx1, idx2)
 #'
-#' @param dist A `"dist"` object, which can be computed via the [stats::dist] function, representing the full pairwise distance matrix between observations.
+#' @param dist A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.
 #' @param idx1 An integer vector, specifying the row indices of the subsetted matrix.
 #' @param idx2 An integer vector, specifying the column indices of the subsetted matrix.
 #'
 #' @details
-#' This function efficiently subsets a `"dist"` object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
-#' It avoids explicit conversion from the `"dist"` object to a dense `"matrix"`, improving memory efficiency and computational speed, especially with large datasets.
+#' This function efficiently subsets a "dist" object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
+#' It avoids explicit conversion from the "dist" object to a dense "matrix", improving memory efficiency and computational speed, especially with large datasets.
 #'
 #' @return A numeric matrix storing pairwise distances between observations column-indexed by \code{idx1} and row-indexed by \code{idx2}.
 #'
