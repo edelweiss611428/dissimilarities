@@ -35,7 +35,7 @@
 #' v2 = as.vector(subDist2Dist(dx, 1:10))
 #' all.equal(v1, v2)
 #'
-#' @author Long M. Nguyen \email{edelweiss611428@gmail.com}
+#' @author Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 subDist2Dist = function(dist, idx, diag = F, upper = F){

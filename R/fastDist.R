@@ -34,7 +34,7 @@
 #' v2 = as.vector(fastDist(x, "minkowski", p = 5))
 #' all.equal(v1, v2)
 #'
-#' @author Long M. Nguyen \email{edelweiss611428@gmail.com}
+#' @author Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 
