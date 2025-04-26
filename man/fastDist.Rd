@@ -2,7 +2,7 @@
 % Please edit documentation in R/fastDist.R
 \name{fastDist}
 \alias{fastDist}
-\title{`"dist"` object computation}
+\title{"dist" object computation}
 \usage{
 fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 }
@@ -22,12 +22,12 @@ fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 A distance matrix of class `"dist"`.
 }
 \description{
-Efficiently computes a `"dist"` object from a numeric matrix using various distance metrics.
+Efficiently computes a "dist" object from a numeric matrix using various distance metrics.
 }
 \details{
-Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact `"dist"` object, which stores
-the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including `"euclidean"`,
-`"manhattan"`, `"maximum"`, `"minkowski"`, `"cosine"`, and `"canberra"`.
+Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact "dist" object, which stores
+the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including "euclidean",
+"manhattan", "maximum", "minkowski", "cosine", and "canberra".
 
 This implementation is optimised for speed, especially on large matrices.
 }

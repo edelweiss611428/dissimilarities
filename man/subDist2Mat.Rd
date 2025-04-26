@@ -7,7 +7,7 @@
 subDist2Mat(dist, idx1, idx2)
 }
 \arguments{
-\item{dist}{A `"dist"` object, which can be computed via the [stats::dist] function, representing the full pairwise distance matrix between observations.}
+\item{dist}{A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.}
 
 \item{idx1}{An integer vector, specifying the row indices of the subsetted matrix.}
 
@@ -17,11 +17,11 @@ subDist2Mat(dist, idx1, idx2)
 A numeric matrix storing pairwise distances between observations column-indexed by \code{idx1} and row-indexed by \code{idx2}.
 }
 \description{
-Efficiently extracts a 2d submatrix of pairwise distances from a `"dist"` object.
+Efficiently extracts a 2d submatrix of pairwise distances from a "dist" object.
 }
 \details{
-This function efficiently subsets a `"dist"` object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
-It avoids explicit conversion from the `"dist"` object to a dense `"matrix"`, improving memory efficiency and computational speed, especially with large datasets.
+This function efficiently subsets a "dist" object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
+It avoids explicit conversion from the "dist" object to a dense "matrix", improving memory efficiency and computational speed, especially with large datasets.
 }
 \examples{
 

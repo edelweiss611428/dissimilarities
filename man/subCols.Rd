@@ -2,23 +2,23 @@
 % Please edit documentation in R/subCols.R
 \name{subCols}
 \alias{subCols}
-\title{Subset a `"dist"` Object by Columns}
+\title{Subset a "dist" Object by Columns}
 \usage{
 subCols(dist, idx)
 }
 \arguments{
-\item{dist}{A `"dist"` object, which can be computed via the stats::dist() function, representing pairwise distances between observations.}
+\item{dist}{A "dist" object, which can be computed via the stats::dist function, representing pairwise distances between observations.}
 
 \item{idx}{An integer vector, specifying the column indices of the subsetted matrix.}
 }
 \value{
-A numeric `"matrix"` containing the pairwise distances between all rows and the specified columns.
+A numeric "matrix" containing the pairwise distances between all rows and the specified columns.
 }
 \description{
-Efficiently subsets a `"dist"` object by selecting specified columns, returning the corresponding section of the distance matrix.
+Efficiently subsets a "dist" object by selecting specified columns, returning the corresponding section of the distance matrix.
 }
 \details{
-This function extracts specified columns from a `"dist"` object without explicit conversion to a dense distance `"matrix"`,
+This function extracts specified columns from a "dist" object without explicit conversion to a dense distance "matrix",
 resulting in better performance and reduced memory overhead. Particularly useful when only a subset of distances is needed for downstream tasks.
 }
 \examples{

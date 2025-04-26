@@ -7,7 +7,7 @@
 subDist2Dist(dist, idx, diag = F, upper = F)
 }
 \arguments{
-\item{dist}{A "dist" object, which can be computed via the [stats::dist] function, representing the full pairwise distance matrix between observations.}
+\item{dist}{A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.}
 
 \item{idx}{An integer vector, specifying the indices of the observations to retain.}
 
@@ -16,15 +16,15 @@ subDist2Dist(dist, idx, diag = F, upper = F)
 \item{upper}{A boolean value, indicating whether to display the upper triangular entries.}
 }
 \value{
-A numeric `"matrix"` storing pairwise distances between the selected observations.
+A numeric "matrix" storing pairwise distances between the selected observations.
 }
 \description{
-Efficiently extracts a subset of observations from a `"dist"` object and returns a new `"dist"` object representing only the selected distances.
+Efficiently extracts a subset of observations from a "dist" object and returns a new "dist" object representing only the selected distances.
 }
 \details{
-This function subsets a `"dist"` object directly without explicit conversion to a dense distance `"matrix"`.
+This function subsets a "dist" object directly without explicit conversion to a dense distance "matrix".
 It extracts only the relevant distances corresponding to the selected indices, improving both performance and memory efficiency.
-The result is returned as a subsetted `"dist"` object, preserving compatibility with downstream functions that accept this class.
+The result is returned as a subsetted "dist" object, preserving compatibility with downstream functions that accept this class.
 }
 \examples{
 
