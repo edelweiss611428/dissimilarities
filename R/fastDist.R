@@ -1,22 +1,28 @@
 #' @name fastDist
-#' @title "dist" object computation
+#' @title `"dist"` object computation
 #'
-#' @description  This function efficiently computes a "dist" object from a numeric matrix.
+#' @description  Efficiently computes a `"dist"` object from a numeric matrix using various distance metrics.
 #'
 #' @usage fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 #'
 #' @param X A numeric matrix.
-#' @param method A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".
+#' @param method A character string specifying the distance metric to use. Supported methods include
+#' \code{"euclidean"}, \code{"manhattan"}, \code{"maximum"}, \code{"minkowski"}, \code{"cosine"}, and \code{"canberra"}.
 #' @param diag A boolean value, indicating whether to display the diagonal entries.
 #' @param upper A boolean value, indicating whether to display the upper triangular entries.
 #' @param p A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
 #'
-#' @details This function computes a distance matrix of class "dist", consisting of pair-wise distances between rows in the input data matrix. This object is internally an 1d array.
+#' @details
+#' Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact `"dist"` object, which stores
+#' the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including `"euclidean"`,
+#' `"manhattan"`, `"maximum"`, `"minkowski"`, `"cosine"`, and `"canberra"`.
+#'
+#' This implementation is optimised for speed, especially on large matrices.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy dist
 #' @importFrom stats na.fail
-#' @return A distance matrix of class "dist".
+#' @return A distance matrix of class `"dist"`.
 #'
 #' @examples
 #'
@@ -28,7 +34,7 @@
 #' v2 = as.vector(fastDist(x, "minkowski", p = 5))
 #' all.equal(v1, v2)
 #'
-#' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
+#' @author Minh-Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 

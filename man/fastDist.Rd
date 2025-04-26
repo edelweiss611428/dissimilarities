@@ -2,14 +2,15 @@
 % Please edit documentation in R/fastDist.R
 \name{fastDist}
 \alias{fastDist}
-\title{"dist" object computation}
+\title{`"dist"` object computation}
 \usage{
 fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 }
 \arguments{
 \item{X}{A numeric matrix.}
 
-\item{method}{A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".}
+\item{method}{A character string specifying the distance metric to use. Supported methods include
+\code{"euclidean"}, \code{"manhattan"}, \code{"maximum"}, \code{"minkowski"}, \code{"cosine"}, and \code{"canberra"}.}
 
 \item{diag}{A boolean value, indicating whether to display the diagonal entries.}
 
@@ -18,13 +19,17 @@ fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 \item{p}{A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
 }
 \value{
-A distance matrix of class "dist".
+A distance matrix of class `"dist"`.
 }
 \description{
-This function efficiently computes a "dist" object from a numeric matrix.
+Efficiently computes a `"dist"` object from a numeric matrix using various distance metrics.
 }
 \details{
-This function computes a distance matrix of class "dist", consisting of pair-wise distances between rows in the input data matrix. This object is internally an 1d array.
+Calculates pairwise distances between rows of a numeric matrix and returns the result as a compact `"dist"` object, which stores
+the lower-triangular entries of a complete distance matrix. Supports multiple distance measures, including `"euclidean"`,
+`"manhattan"`, `"maximum"`, `"minkowski"`, `"cosine"`, and `"canberra"`.
+
+This implementation is optimised for speed, especially on large matrices.
 }
 \examples{
 
@@ -38,5 +43,5 @@ all.equal(v1, v2)
 
 }
 \author{
-Minh Long Nguyen \email{edelweiss611428@gmail.com}
+Minh-Long Nguyen \email{edelweiss611428@gmail.com}
 }

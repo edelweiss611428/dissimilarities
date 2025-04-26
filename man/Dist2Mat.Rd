@@ -7,16 +7,18 @@
 Dist2Mat(dist)
 }
 \arguments{
-\item{dist}{A "dist" object, which can be computed via the stats::dist() function.}
+\item{dist}{A `"dist"` object, which can be computed via the [stats::dist] function, representing pairwise distances between observations.}
 }
 \value{
-A distance "matrix".
+A distance `"matrix"`.
 }
 \description{
-This function efficiently converts a "dist" object to a distance "matrix".
+Efficiently converts a `"dist"` object into a symmetric distance `"matrix"`.
 }
 \details{
-This function efficiently converts a "dist" object to a distance "matrix". It is faster than base::as.matrix() and proxy::as.matrix().
+Converts a `"dist"` object, typically created using the [stats::dist] function, into a symmetric matrix form.
+This implementation is optimised for speed and performs significantly faster than [base::as.matrix] or [proxy::as.matrix]
+when applied to `"dist"` objects.
 }
 \examples{
 
@@ -34,5 +36,5 @@ all.equal(v1, v2)
 
 }
 \author{
-Minh Long Nguyen \email{edelweiss611428@gmail.com}
+Minh-Long Nguyen \email{edelweiss611428@gmail.com}
 }

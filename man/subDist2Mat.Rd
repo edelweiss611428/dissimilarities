@@ -7,20 +7,21 @@
 subDist2Mat(dist, idx1, idx2)
 }
 \arguments{
-\item{dist}{A "dist" object, which can be computed via the stats::dist() function, representing the full pairwise distance matrix between observations.}
+\item{dist}{A `"dist"` object, which can be computed via the [stats::dist] function, representing the full pairwise distance matrix between observations.}
 
 \item{idx1}{An integer vector, specifying the row indices of the subsetted matrix.}
 
 \item{idx2}{An integer vector, specifying the column indices of the subsetted matrix.}
 }
 \value{
-A matrix storing pairwise distances between pairs in idx1 x idx2.
+A numeric matrix storing pairwise distances between observations column-indexed by \code{idx1} and row-indexed by \code{idx2}.
 }
 \description{
-This function efficiently subsets a "dist" object to a smaller distance "matrix".
+Efficiently extracts a 2d submatrix of pairwise distances from a `"dist"` object.
 }
 \details{
-This function efficiently subsets a "dist" object to a smaller "matrix" based on row and column indices of the distance matrix. It does not involve conversion of the original "dist" object to a numeric matrix, thereby reducing memory usage and improving computational efficiency.
+This function efficiently subsets a `"dist"` object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
+It avoids explicit conversion from the `"dist"` object to a dense `"matrix"`, improving memory efficiency and computational speed, especially with large datasets.
 }
 \examples{
 
@@ -40,5 +41,5 @@ all.equal(v1, v2)
 
 }
 \author{
-Minh Long Nguyen \email{edelweiss611428@gmail.com}
+Minh-Long Nguyen \email{edelweiss611428@gmail.com}
 }

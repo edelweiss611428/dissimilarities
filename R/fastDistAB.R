@@ -1,21 +1,27 @@
 #' @name fastDistAB
-#' @title Pairwise distances between rows of two matrices
+#' @title Compute Pairwise Distances Between Rows of Two Matrices
 #'
-#' @description  This function efficiently computes pairwise distances between rows of two numeric matrices.
+#' @description
+#' Efficiently computes pairwise distances between the rows of two numeric matrices using various distance metrics.
 #'
 #' @usage fastDistAB(A, B, method, p = 2)
 #'
 #' @param A A numeric matrix.
 #' @param B A numeric matrix.
-#' @param method A string specifying a distance method. Supported methods include "euclidean", "manhattan", "maximum", "minkowski", "cosine", and "canberra".
+#' @param method A character string specifying the distance metric to use. Supported methods include
+#' \code{"euclidean"}, \code{"manhattan"}, \code{"maximum"}, \code{"minkowski"}, \code{"cosine"}, and \code{"canberra"}.
 #' @param p A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).
 #'
-#' @details This function computes a distance "matrix" storing pairwise distances between rows of two numeric matrices A and B.
+#' @details
+#' This function computes the full pairwise distance matrix between the rows of matrices \code{A} and \code{B},
+#' without forming a concatenated matrix or performing unnecessary intermediate conversions.
+#' It supports multiple commonly used distance measures and is optimised for speed.
+#'
+#' @return A numeric matrix of dimensions \code{nrow(A)} by \code{nrow(B)}, where each entry represents the distance between a row in \code{A} and a row in \code{B}.
 #'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy dist
 #' @importFrom stats na.fail
-#' @return A matrix storing pairwise distances between rows of A and B.
 #'
 #' @examples
 #'
@@ -29,7 +35,7 @@
 #' v1 = as.vector(proxy::dist(A,B, "minkowski", p = 5))
 #' v2 = as.vector(fastDistAB(A,B, "minkowski", p = 5L))
 #' all.equal(v1, v2)
-#' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
+#' @author Minh-Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 
