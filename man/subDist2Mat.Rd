@@ -41,5 +41,5 @@ all.equal(v1, v2)
 
 }
 \author{
-Minh-Long Nguyen \email{edelweiss611428@gmail.com}
+Long Nguyen \email{edelweiss611428@gmail.com}
 }
