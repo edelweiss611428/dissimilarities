@@ -34,7 +34,9 @@ microbenchmark(as.dist(base::as.matrix(dx)[1:10,1:10]),
                as.dist(proxy::as.matrix(dx)[1:10,1:10]),
                subDist2Dist(dx, 1:10))
 #Check if equal
-all.equal(as.vector(as.dist(base::as.matrix(dx)[1:10,1:10])), as.vector(subDist2Dist(dx, 1:10)))
+v1 = as.vector(as.dist(base::as.matrix(dx)[1:10,1:10]))
+v2 = as.vector(subDist2Dist(dx, 1:10))
+all.equal(v1, v2)
 
 }
 \author{

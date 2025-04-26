@@ -25,7 +25,10 @@
 #' B = X[26:50,]
 #' microbenchmark(proxy::dist(A,B, "minkowski", p = 5),
 #'                fastDistAB(A,B, "minkowski", p = 5L))
-#' all.equal(as.vector(proxy::dist(A,B, "minkowski", p = 5)), as.vector(fastDistAB(A,B, "minkowski", p = 5L)))
+#' #Check if equal
+#' v1 = as.vector(proxy::dist(A,B, "minkowski", p = 5))
+#' v2 = as.vector(fastDistAB(A,B, "minkowski", p = 5L))
+#' all.equal(v1, v2)
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 

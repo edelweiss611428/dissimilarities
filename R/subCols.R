@@ -26,7 +26,9 @@
 #'                proxy::as.matrix(dx)[1:50,idx],
 #'                subCols(dx, idx))
 #' #Check if equal
-#' all.equal(as.vector(base::as.matrix(dx)[1:50,idx]), as.vector(subCols(dx, idx)))
+#' v1 = as.vector(base::as.matrix(dx)[1:50,idx])
+#' v2 = as.vector(subCols(dx, idx))
+#' all.equal(v1, v2)
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export

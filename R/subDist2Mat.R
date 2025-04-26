@@ -28,7 +28,9 @@
 #'                proxy::as.matrix(dx)[idx1,idx2],
 #'                subDist2Mat(dx, idx1, idx2))
 #' #Check if equal
-#' all.equal(as.vector(base::as.matrix(dx)[idx1,idx2]), as.vector(subDist2Mat(dx, idx1, idx2)))
+#' v1 = as.vector(base::as.matrix(dx)[idx1,idx2])
+#' v2 = as.vector(subDist2Mat(dx, idx1, idx2))
+#' all.equal(v1, v2)
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export

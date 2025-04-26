@@ -24,7 +24,9 @@
 #' x = matrix(rnorm(200), nrow = 50)
 #' microbenchmark(stats::dist(x, "minkowski", p = 5),
 #'                fastDist(x, "minkowski", p = 5))
-#' all.equal(as.vector(stats::dist(x, "minkowski", p = 5)), as.vector(fastDist(x, "minkowski", p = 5)))
+#' v1 = as.vector(stats::dist(x, "minkowski", p = 5))
+#' v2 = as.vector(fastDist(x, "minkowski", p = 5))
+#' all.equal(v1, v2)
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export

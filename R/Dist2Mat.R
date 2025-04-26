@@ -23,7 +23,9 @@
 #'                proxy::as.matrix(dx),
 #'                Dist2Mat(dx))
 #' #Check if equal
-#' all.equal(as.vector(base::as.matrix(dx)), as.vector(Dist2Mat(dx)))
+#' v1 = as.vector(base::as.matrix(dx))
+#' v2 = as.vector(Dist2Mat(dx))
+#' all.equal(v1, v2)
 #'
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
