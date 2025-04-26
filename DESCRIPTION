@@ -2,8 +2,11 @@ Package: dissimilarities
 Type: Package
 Title: Creating, Manipulating, and Subsetting 'dist' Objects
 Version: 0.1.0
-Author: Long Nguyen
-Maintainer: Long Nguyen <edelweiss611428@gmail.com>
+Authors@R: person(given = "Minh Long",
+                  family = "Nguyen",
+                  role = c("aut", "cre"),
+                  email = "edelweiss611428@gmail.com")
+Maintainer: Minh Long Nguyen <edelweiss611428@gmail.com>
 Description: Efficiently creates, manipulates, and subsets "dist" objects, commonly used in cluster analysis. Designed to minimise unnecessary conversions and computational overhead while enabling seamless interaction with distance matrices.
 License: CC BY 4.0
 Encoding: UTF-8

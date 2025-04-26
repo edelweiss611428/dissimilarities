@@ -33,7 +33,7 @@
 #' v2 = as.vector(subCols(dx, idx))
 #' all.equal(v1, v2)
 #'
-#' @author Long Nguyen \email{edelweiss611428@gmail.com}
+#' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 subCols = function(dist, idx){

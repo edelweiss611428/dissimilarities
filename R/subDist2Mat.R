@@ -35,7 +35,7 @@
 #' v2 = as.vector(subDist2Mat(dx, idx1, idx2))
 #' all.equal(v1, v2)
 #'
-#' @author Long Nguyen \email{edelweiss611428@gmail.com}
+#' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
 subDist2Mat = function(dist, idx1, idx2){
