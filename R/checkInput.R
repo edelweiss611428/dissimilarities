@@ -1,6 +1,7 @@
 #Checking options - For internal uses only
 
 #Data matrix
+
 checkMat = function(mat){
   if(!is.matrix(mat) | !is.numeric(mat)){
     stop("Input data must be numeric matrices!")
@@ -10,6 +11,7 @@ checkMat = function(mat){
 }
 
 #Indices
+
 checkIdx = function(idx, N){
   if(!is.numeric(idx)){
     stop("idx must be a numeric vector!")
@@ -24,6 +26,7 @@ checkIdx = function(idx, N){
 }
 
 #Is dist a "dist" object?
+
 checkDist = function(dist){
 
   if(!inherits(dist, "dist")) {
@@ -32,6 +35,7 @@ checkDist = function(dist){
 }
 
 #single boolean value?
+
 checkBool = function(bool){
 
   if(length(bool) != 1 | !is.logical(bool)){
@@ -48,6 +52,7 @@ checkMethod  = function(method){
 }
 
 #valid p order?
+
 checkP = function(method){
   if(length(p) != 1 |!is.numeric(p)){
     stop("Invalid p!")
