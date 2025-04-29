@@ -41,30 +41,10 @@
 
 fastDistAB = function(A, B, method, p = 2L){
 
-  if(!is.matrix(A) | !is.numeric(A)){
-    stop("A must be a numeric matrix!")
-  } else{
-    na.fail(A)
-  }
-
-  if(!is.matrix(B) | !is.numeric(B)){
-    stop("B must be a numeric matrix!")
-  } else{
-    na.fail(B)
-  }
-
-  if(length(method) != 1 |!is.character(method)){
-    stop("Invalid method!")
-  }
-
-  if(length(p) != 1 |!is.numeric(p)){
-    stop("Invalid p!")
-  } else{
-    p = as.integer(p)
-    if(p < 0){
-      stop("p >= 1 is required!")
-    }
-  }
+  checkMat(A)
+  checkMat(B)
+  checkMethod(method)
+  p = checkP(p) #double to int conversion
 
   return(.fastDistABCpp(A, B, method, p))
 

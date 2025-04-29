@@ -40,25 +40,11 @@
 
 subDist2Dist = function(dist, idx, diag = F, upper = F){
 
-  if(!inherits(dist, "dist")) {
-    stop("dist must be a 'dist' object!")
-  }
-
+  checkDist(dist)
   N = attr(dist, "Size")
-
-  if(length(diag) != 1 | length(upper) != 1 |
-     !is.logical(diag) | !is.logical(upper)){
-    stop("Invalid (diag, upper) option!")
-  }
-
-  if(!is.numeric(idx)){
-    stop("Numeric idx is required!")
-  } else{
-    idx = as.integer(idx)
-    if(max(idx) > N | min(idx) < 1){
-      stop("idx not in range [1,N]!")
-    }
-  }
+  checkBool(diag)
+  checkBool(upper)
+  idx = checkIdx(idx, N) #double to int conversion
 
   return(.subsetDist2DistCpp(dist, idx - 1L, diag, upper))
 

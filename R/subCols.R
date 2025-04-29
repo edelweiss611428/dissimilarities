@@ -38,21 +38,9 @@
 
 subCols = function(dist, idx){
 
-  if(!inherits(dist, "dist")) {
-    stop("dist must be a 'dist' object!")
-  }
-
+  checkDist(dist)
   N = attr(dist, "Size")
-
-  if(!is.numeric(idx)){
-    stop("Numeric idx is required!")
-  } else{
-    na.fail(idx)
-    idx = as.integer(idx)
-    if(max(idx) > N | min(idx) < 1){
-      stop("idx not in range [1,N]!")
-    }
-  }
+  idx = checkIdx(idx,N) #double to int conversion
 
   return(.subsetColsCpp(dist, idx - 1L))
 

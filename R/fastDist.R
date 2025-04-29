@@ -40,35 +40,13 @@
 
 fastDist = function(X, method = "euclidean", diag = F, upper = F, p = 2L){
 
-  if(length(diag) != 1 | length(upper) != 1 |
-     !is.logical(diag) | !is.logical(upper)){
-    stop("Invalid (diag, upper) option!")
-  }
-
-  if(!is.matrix(X) | !is.numeric(X)){
-    stop("X must be a numeric matrix!")
-  } else{
-    na.fail(X)
-  }
-
-  if(length(method) != 1 |!is.character(method)){
-    stop("Invalid method!")
-  }
-
-  if(length(p) != 1 |!is.numeric(p)){
-    stop("Invalid p!")
-  } else{
-    p = as.integer(p)
-    if(p < 0){
-      stop("p >= 1 is required!")
-    }
-  }
+  checkBool(diag)
+  checkBool(upper)
+  checkMat(X)
+  checkMethod(method)
+  p = checkP(p) #double to int conversion
 
   return(.fastDistCpp(X, method, diag, upper, p))
-
-
-
-
 
 
 }

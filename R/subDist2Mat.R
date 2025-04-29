@@ -40,31 +40,10 @@
 
 subDist2Mat = function(dist, idx1, idx2){
 
-  if(!inherits(dist, "dist")) {
-    stop("dist must be a 'dist' object!")
-  }
-
+  checkDist(dist)
   N = attr(dist, "Size")
-
-  if(!is.numeric(idx1)){
-    stop("Numeric idx1 is required!")
-  } else{
-    idx1 = as.integer(idx1)
-    if(max(idx1) > N | min(idx1) < 1){
-      na.fail(idx1)
-      stop("idx1 not in range [1,N]")
-    }
-  }
-
-  if(!is.numeric(idx2)){
-    stop("Numeric idx2 is required!")
-  } else{
-    na.fail(idx2)
-    idx2 = as.integer(idx2)
-    if(max(idx2) > N | min(idx2) < 1){
-      stop("idx2 not in range [1,N]")
-    }
-  }
+  idx1 = checkIdx(idx1, N) #double to int conversion
+  idx2 = checkIdx(idx2, N)
 
   return(.subsetDist2MatCpp(dist, idx1-1L, idx2-1L))
 

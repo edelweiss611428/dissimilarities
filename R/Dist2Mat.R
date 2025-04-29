@@ -35,9 +35,7 @@
 
 Dist2Mat = function(dist){
 
-  if(!inherits(dist, "dist")) {
-    stop("dist must be a 'dist' object!")
-  }
+  checkDist(dist)
 
   return(.Dist2MatCpp(dist))
 
