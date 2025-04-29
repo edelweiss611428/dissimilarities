@@ -4,7 +4,7 @@
 #' @description
 #' Efficiently computes pairwise distances between the rows of two numeric matrices using various distance metrics.
 #'
-#' @usage fastDistAB(A, B, method, p = 2)
+#' @usage fastDistAB(A, B, method = "euclidean", p = 2)
 #'
 #' @param A A numeric matrix.
 #' @param B A numeric matrix.
@@ -39,7 +39,7 @@
 #' @export
 
 
-fastDistAB = function(A, B, method, p = 2L){
+fastDistAB = function(A, B, method = "euclidean", p = 2L){
 
   checkMat(A)
   checkMat(B)

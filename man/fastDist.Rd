@@ -19,7 +19,7 @@ fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
 \item{p}{A positive integer, required for computing Minkowski distance; by default p = 2 (i.e., Euclidean).}
 }
 \value{
-A distance matrix of class `"dist"`.
+A distance matrix of class "dist".
 }
 \description{
 Efficiently computes a "dist" object from a numeric matrix using various distance metrics.

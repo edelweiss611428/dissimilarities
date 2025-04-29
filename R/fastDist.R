@@ -22,7 +22,7 @@
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy dist
 #' @importFrom stats na.fail
-#' @return A distance matrix of class `"dist"`.
+#' @return A distance matrix of class "dist".
 #'
 #' @examples
 #'

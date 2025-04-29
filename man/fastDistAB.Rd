@@ -4,7 +4,7 @@
 \alias{fastDistAB}
 \title{Compute Pairwise Distances Between Rows of Two Matrices}
 \usage{
-fastDistAB(A, B, method, p = 2)
+fastDistAB(A, B, method = "euclidean", p = 2)
 }
 \arguments{
 \item{A}{A numeric matrix.}

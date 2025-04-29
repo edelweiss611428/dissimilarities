@@ -15,7 +15,8 @@ Imports:
     Rcpp,
     microbenchmark,
     proxy,
-    stats
+    stats,
+    testthat
 LinkingTo: 
     Rcpp,
     RcppArmadillo
