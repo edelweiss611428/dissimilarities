@@ -3,7 +3,7 @@
 #'
 #' @description  Efficiently computes a "dist" object from a numeric matrix using various distance metrics.
 #'
-#' @usage fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
+#' @usage fastDist(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L)
 #'
 #' @param X A numeric matrix.
 #' @param method A character string specifying the distance metric to use. Supported methods include
@@ -38,7 +38,7 @@
 #' @export
 
 
-fastDist = function(X, method = "euclidean", diag = F, upper = F, p = 2L){
+fastDist = function(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L){
 
   checkBool(diag)
   checkBool(upper)

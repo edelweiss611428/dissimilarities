@@ -38,6 +38,7 @@ checkDist = function(dist){
 
 checkBool = function(bool){
 
+  na.fail(bool)
   if(length(bool) != 1 | !is.logical(bool)){
     stop("Invalid (diag, upper) option!")
   }
@@ -46,14 +47,17 @@ checkBool = function(bool){
 
 #valid method (i.e., a single string value)
 checkMethod  = function(method){
+
   if(length(method) != 1 |!is.character(method)){
     stop("Invalid method!")
   }
+
 }
 
 #valid p order?
 
-checkP = function(method){
+checkP = function(p){
+
   if(length(p) != 1 |!is.numeric(p)){
     stop("Invalid p!")
   } else{

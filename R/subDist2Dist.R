@@ -3,7 +3,7 @@
 #'
 #' @description  Efficiently extracts a subset of observations from a "dist" object and returns a new "dist" object representing only the selected distances.
 #'
-#' @usage subDist2Dist(dist, idx, diag = F, upper = F)
+#' @usage subDist2Dist(dist, idx, diag = FALSE, upper = FALSE)
 #'
 #' @param dist A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.
 #' @param idx An integer vector, specifying the indices of the observations to retain.
@@ -38,7 +38,7 @@
 #' @author Minh Long Nguyen \email{edelweiss611428@gmail.com}
 #' @export
 
-subDist2Dist = function(dist, idx, diag = F, upper = F){
+subDist2Dist = function(dist, idx, diag = FALSE, upper = FALSE){
 
   checkDist(dist)
   N = attr(dist, "Size")

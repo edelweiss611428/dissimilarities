@@ -1,3 +1,71 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+# tests/testthat/test-fastDistAB.R
+set.seed(4000)
+x = matrix(rnorm(100), nrow = 10)
+y = matrix(rnorm(100), nrow = 10)
+
+canberra_dist = function(x,y){
+  nx = nrow(x)
+  ny = nrow(y)
+  dx = matrix(numeric(nx*ny), nrow = nx)
+  for(i in 1:nx){
+    for(j in 1:ny){
+      dx[i,j] = stats::dist(rbind(x[i,],y[j,]), "canberra")
+    }
+  }
+  return(dx)
+}
+
+test_that("fastDistAB gives similar results as proxy::dist", {
+  methods = c("euclidean", "manhattan", "maximum", "minkowski", "minkowski")
+  #canberra distance not included
+  ps = c(rep(2,4),10,100)
+
+  for(i in seq_along(methods)){
+    fastDist_ = as.vector(fastDistAB(x, y, methods[i], p = ps[i]))
+    proxydist_ = as.vector(proxy::dist(x, y, methods[i], p = ps[i]))
+    expect_equal(fastDist_, proxydist_)
+  }
 })
+
+test_that("fastDistAB gives correct results for canberra distance", {
+  fastDist_ = as.vector(fastDistAB(x, y, "canberra"))
+  canberra_dist_ = as.vector(canberra_dist(x,y))
+  expect_equal(fastDist_, canberra_dist_)
+})
+
+
+test_that("invalid method", {
+
+  test_cases = list(c("Sydney", "Melbourne", "Brisbane"),
+                    T, F, NA, 22)
+
+  for(i in seq_along(test_cases)){
+    expect_error(fastDistAB(x,y, test_cases[[i]]))
+  }
+
+})
+
+test_that("invalid p", {
+  test_cases = list(NA, "a", NULL, T)
+
+  for(i in seq_along(test_cases)){
+    expect_error(fastDistAB(x, y, p = test_cases[[i]]))
+  }
+
+})
+
+
+test_that("data contain NA | not numeric matrix", {
+
+  test_cases = list(1:100, as.matrix(c(1:99, NA)))
+
+  for(i in seq_along(test_cases)){
+    expect_error(fastDistAB(test_cases[[i]],y))
+  }
+  expect_error(fastDistAB(x, y[,2:10]))
+
+})
+
+
+
+
