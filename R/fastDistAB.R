@@ -1,5 +1,5 @@
 #' @name fastDistAB
-#' @title Compute pairwise distances between rows of two matrices
+#' @title Computing pairwise distances between rows of two matrices
 #'
 #' @description
 #' Efficiently computes pairwise distances between the rows of two numeric matrices using various distance metrics.

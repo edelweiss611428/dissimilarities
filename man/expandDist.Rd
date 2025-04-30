@@ -2,7 +2,7 @@
 % Please edit documentation in R/expandDist.R
 \name{expandDist}
 \alias{expandDist}
-\title{Expand a distance matrix given new data}
+\title{Expanding a distance matrix given new data}
 \usage{
 expandDist(distA, A, B, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
 }

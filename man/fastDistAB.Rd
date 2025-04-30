@@ -2,7 +2,7 @@
 % Please edit documentation in R/fastDistAB.R
 \name{fastDistAB}
 \alias{fastDistAB}
-\title{Compute pairwise distances between rows of two matrices}
+\title{Computing pairwise distances between rows of two matrices}
 \usage{
 fastDistAB(A, B, method = "euclidean", p = 2L)
 }

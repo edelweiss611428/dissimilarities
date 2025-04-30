@@ -2,7 +2,7 @@
 % Please edit documentation in R/subCols.R
 \name{subCols}
 \alias{subCols}
-\title{Subset a "dist" object by columns}
+\title{Subsetting a "dist" object by columns}
 \usage{
 subCols(dist, idx)
 }

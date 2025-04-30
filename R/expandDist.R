@@ -1,5 +1,5 @@
 #' @name expandDist
-#' @title Expand a distance matrix given new data
+#' @title Expanding a distance matrix given new data
 #'
 #' @description
 #' Efficiently appends new "rows" to an existing "dist" object without recomputing a full pairwise distance matrix.
