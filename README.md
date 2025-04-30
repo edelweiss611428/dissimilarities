@@ -2,7 +2,7 @@
 
 ### Description
 
-<p align="justify"> The package provides efficient functions for creating, manipulating, and subsetting "dist" objects, which are commonly used in cluster analysis in R. </p> 
+<p align="justify"> The package provides efficient and user-friendly functions for creating, manipulating, and subsetting "dist" objects, which are commonly used in cluster analysis in R. </p> 
 The current version includes the following features:
 
 - Dist2Mat: Converting a "dist" object to a numeric matrix.
