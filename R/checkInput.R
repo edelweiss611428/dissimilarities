@@ -62,7 +62,7 @@ checkP = function(p){
     stop("Invalid p!")
   } else{
     p = as.integer(p)
-    if(p < 0){
+    if(p <= 0){
       stop("p >= 1 is required!")
     }
   }
