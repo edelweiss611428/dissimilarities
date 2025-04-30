@@ -2,25 +2,24 @@
 % Please edit documentation in R/get2dFrom1d.R
 \name{get2dFrom1d}
 \alias{get2dFrom1d}
-\title{1d-indexing to 2d-indexing}
+\title{1D-indexing to 2D-indexing}
 \usage{
 get2dFrom1d(idx1d, N)
 }
 \arguments{
-\item{idx1d}{An integer vector of 1d indexes}
+\item{idx1d}{An integer vector of 1D indexes}
 
 \item{N}{The number of observations in the original data matrix}
 }
 \value{
-An integer matrix storing the corresponding 2d indexes.
+An integer matrix storing the corresponding 2D indexes.
 }
 \description{
-Efficiently compute 2d-indexing from 1d-indexing
+Efficiently compute 2D-indexing from 1D-indexing
 }
 \details{
-Efficiently converts 1d-indexing to 2d-indexing, which is more user-friendly.
-This can be used to identify any pairs of observations in "dist" objects given
-their 1d indexes.
+Converts 1D indexing (as used in R's "dist" objects) into 2D indexing (row-column pairs)
+for a distance matrix of size \eqn{N \times N}.
 }
 \examples{
 

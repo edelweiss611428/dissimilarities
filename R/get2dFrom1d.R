@@ -25,7 +25,7 @@
 get2dFrom1d = function(idx1d, N){
 
   checkP(N)
-  check(idx1d, N)
+  checkIdx(idx1d, N)
 
   return(.get2dFrom1dCpp(idx1d, N))
 
