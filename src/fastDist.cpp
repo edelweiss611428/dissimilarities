@@ -98,6 +98,11 @@ inline double cosineCpp(const double* xi, const double* xj, int nr1, int nr2, in
 NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidean",
                        bool diag  = false, bool upper = false, int p = 2){
   const int nr   = X.nrow();
+
+  if(nr > 65535){
+    Rcpp::stop("The number of rows in X should be less than 65535!");
+  }
+
   const int nc   = X.ncol();
   const int len = nr * (nr - 1) / 2;
   NumericVector out(len);
@@ -189,8 +194,16 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 // [[Rcpp::export(.fastDistABCpp)]]
 NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std::string method = "euclidean",
                             int p = 2){
+
   const int nA   = A.nrow();
   const int nB   = B.nrow();
+
+  const long long MAX_INT = 2147483647;  // 2^31 - 1
+
+  if (nA*nB > MAX_INT) {
+    Rcpp::stop("nrow(A)*nrow(B) exceeds 2^31-1!");
+  }
+
   int d = A.ncol();
 
   if (B.ncol() != d)
