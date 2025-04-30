@@ -118,7 +118,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   if(method == "euclidean"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
@@ -128,7 +128,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   } else if (method == "manhattan"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
@@ -138,7 +138,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   } else if (method == "minkowski"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
@@ -148,7 +148,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   } else if (method == "maximum"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
@@ -158,7 +158,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   } else if (method == "canberra"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
@@ -169,7 +169,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
 
   } else if (method == "cosine"){
 
-    for (int i = 0; i < nr; i++) {
+    for (int i = 0; i < nr-1; i++) {
       xi = xptr + i;
       for (int j = i+1; j < nr; j++) {
         xj = xptr + j;
