@@ -163,7 +163,7 @@ NumericMatrix Dist2MatCpp(const NumericVector &dist){
 
   int iN;
 
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < N-1; i++) {
     iN = i * (N+1);
     upperIdx = iN;
     lowerIdx = iN;
