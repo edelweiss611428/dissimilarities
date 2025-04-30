@@ -8,13 +8,14 @@ The current version includes the following features:
 - Dist2Mat: Converting a "dist" object to a numeric matrix.
 - subDist2Dist: Subsetting a "dist" object to a  "dist" object without explicitly converting it to a numeric matrix.
 - subDist2Mat: Subsetting a "dist" object to a numeric "matrix" without explicitly converting the object to a numeric matrix.
-- subCols: Subsettings a "dist" object to a numeric "matrix" based on some column (equivalently, row) indices.
+- subCols: Subsetting a "dist" object to a numeric "matrix" based on some column (equivalently, row) indices.
 - fastDist: Computing a "dist" object given a numeric matrix.
 - fastDistAB: Computing a numeric "matrix" storing pairwise distances between rows in two matrices.
+- get2dFrom1d: Computing 2D-indexing given 1D-indexing (as used in R's "dist" objects).
 
 Features under development:
 
-- Providing additional distance functions in fastDist and fastDistAB.
+- Providing additional distance functions in fastDist and fastDistAB. The current version only supports popular metrics, namely "euclidean", "manhattan", "minkowski", "maximum", "canberra", and "cosine".
 - expandDist: Expanding a "dist" object given new data.
 
  ### Installation
