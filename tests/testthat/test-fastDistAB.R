@@ -33,6 +33,12 @@ test_that("fastDistAB gives correct results for canberra distance", {
   expect_equal(fastDist_, canberra_dist_)
 })
 
+test_that("fail if nrow(A)*nrow(B) > MAX.INT", {
+  x_large = as.matrix(rnorm(10^6))
+  y_large = as.matrix(rnorm(10^6))
+  expect_error(fastDistAB(x_large, y_large))
+})
+
 
 test_that("invalid method", {
 

@@ -23,6 +23,12 @@ test_that("fastDist gives similar results as proxy::dist", {
 
 })
 
+test_that("fail if nrow(X) > 65535", {
+  x_large = as.matrix(rnorm(10^6))
+  expect_error(fastDist(x_large))
+})
+
+
 
 test_that("invalid method", {
 
