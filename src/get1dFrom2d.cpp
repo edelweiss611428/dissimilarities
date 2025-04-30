@@ -32,7 +32,7 @@ using namespace Rcpp;
 // get2dFrom1dCpp(): 1d to 2d index conversion
 // [[Rcpp::export(.get2dFrom1dCpp)]]
 IntegerMatrix get2dFrom1dCpp(const IntegerVector &idx, int n) {
-  //Here idx >= 1 not 0
+  // Here idx >= 1 not 0
   int nc = idx.size();
   int n1 = n - 1;
   int N = n * (n - 1) / 2;
@@ -41,14 +41,14 @@ IntegerMatrix get2dFrom1dCpp(const IntegerVector &idx, int n) {
 
   // Raw pointers for access
   const int* idx_ptr = idx.begin();         // ptr to idx
-  int* out_ptr = INTEGER(idx2d);            // ptr to idx2d (output)
+  int* idx2dptr = INTEGER(idx2d);           // ptr to idx2d (output)
   int j = 0;
 
   for (int i = 0; i < nc; ++i) {
     int a = 1 + 8 * (N - idx_ptr[i]);
     int c = static_cast<int>(std::floor((-1 + std::sqrt(a)) / 2.0));
-    out_ptr[j++]     = n1 - c;                                  // row idx
-    out_ptr[j++] = n - (N - idx_ptr[i]) + c * (c + 1) / 2;  // col idx
+    idx2dptr[j++] = n1 - c;                                  // row idx
+    idx2dptr[j++] = n - (N - idx_ptr[i]) + c * (c + 1) / 2;  // col idx
   }
 
   return idx2d;
