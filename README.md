@@ -12,11 +12,11 @@ The current version includes the following features:
 - fastDist: Computing a "dist" object given a numeric matrix.
 - fastDistAB: Computing a numeric "matrix" storing pairwise distances between rows in two matrices.
 - get2dFrom1d: Computing 2D-indexing given 1D-indexing (as used in R's "dist" objects).
+- expandDist: Expanding a "dist" object given new data.
 
-Features under development:
+Feature(s) under development:
 
 - Providing additional distance functions in fastDist and fastDistAB. The current version only supports popular metrics, namely "euclidean", "manhattan", "minkowski", "maximum", "canberra", and "cosine".
-- expandDist: Expanding a "dist" object given new data.
 
  ### Installation
 
