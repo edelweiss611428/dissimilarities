@@ -15,7 +15,7 @@ The current version includes the following features:
 
 Features under development:
 
-- Providing additional distance functions in fastDist and fastDistAB.
+- Providing additional distance functions in fastDist and fastDistAB. The current version only supports popular metrics, namely "euclidean", "manhattan", "minkowski", "maximum", "canberra", and "cosine".
 - expandDist: Expanding a "dist" object given new data.
 
  ### Installation
