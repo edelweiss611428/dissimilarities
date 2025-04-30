@@ -25,3 +25,7 @@
     .Call(`_dissimilarities_fastDistABCpp`, A, B, method, p)
 }
 
+.get2dFrom1dCpp <- function(idx, n) {
+    .Call(`_dissimilarities_get2dFrom1dCpp`, idx, n)
+}
+

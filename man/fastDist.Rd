@@ -4,7 +4,7 @@
 \alias{fastDist}
 \title{"dist" object computation}
 \usage{
-fastDist(X, method = "euclidean", diag = F, upper = F, p = 2L)
+fastDist(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L)
 }
 \arguments{
 \item{X}{A numeric matrix.}

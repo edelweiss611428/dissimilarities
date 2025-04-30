@@ -4,7 +4,7 @@
 \alias{subDist2Dist}
 \title{Dist2Dist subsetting}
 \usage{
-subDist2Dist(dist, idx, diag = F, upper = F)
+subDist2Dist(dist, idx, diag = FALSE, upper = FALSE)
 }
 \arguments{
 \item{dist}{A "dist" object, which can be computed via the stats::dist function, representing the full pairwise distance matrix between observations.}

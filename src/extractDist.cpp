@@ -4,18 +4,24 @@ using namespace Rcpp;
 // indexing(): Convert a 2d index to an 1d index
 inline int indexing(int nr, int i, int j){
 
-  if(i == j){
-    return NumericVector::get_na();
-  }
+  //here i and j count from 0
 
-  if (i < j+1){
-    int temp;
-    temp = i;
-    i = j;
-    j = temp;
-  }
+  // deprecated
+  // if(i == j){
+  //   return NumericVector::get_na();
+  // }
+  // if (i < j+1){
+  //   int temp;
+  //   temp = i;
+  //   i = j;
+  //   j = temp;
+  // }
 
-  return ((2*nr-1-j)*j >> 1) - 1 +(i-j);
+  if (i < j+1) std::swap(i, j);
+
+  // return ((2*nr-1-j)*j >> 1) - 1 +(i-j);
+
+  return (nr*j - j*(j+1)/2 + (i-j-1)); //output idx counts from 0
 
 }
 
@@ -23,16 +29,20 @@ inline int indexing(int nr, int i, int j){
 // [[Rcpp::export(.subsetDist2DistCpp)]]
 NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector & idx,
                                  bool diag = false, bool upper = false){
+
+ //here idx counts from 0
+
   int N = dist.attr("Size");
   int n = idx.size();
   NumericVector subdmat((n-1)*n >> 1);
   double* subdmatptr = REAL(subdmat);
   double* distptr = REAL(dist);
+  const int* idxptr = idx.begin();
   int k = 0;
 
   for(int i = 0; i < n-1; i++){
     for(int j = (i+1); j < n; j++){
-      subdmatptr[k++] = distptr[indexing(N, idx[i], idx[j])];
+      subdmatptr[k++] = distptr[indexing(N, idxptr[i], idxptr[j])];
     }
   }
 
@@ -57,15 +67,16 @@ NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &
   int k = 0;
   double* subdmatptr = &subdmat(0, 0);
   double* distptr = REAL(dist);
+  const int* idx1ptr = idx1.begin();
+  const int* idx2ptr = idx2.begin();
 
   for(int i=0; i<n2;i++){
     for(int j=0;j<n1;j++){
-      if(idx2[i] == idx1[j]){
-        subdmatptr[k] = 0;
+      if(idx2ptr[i] == idx1ptr[j]){
+        subdmatptr[k++] = 0.0;
       } else{
-        subdmatptr[k] = distptr[indexing(N,idx2[i],idx1[j])];
+        subdmatptr[k++] = distptr[indexing(N,idx2ptr[i],idx1ptr[j])];
       }
-      k++;
     }
   }
 
@@ -82,20 +93,21 @@ NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colI
   NumericMatrix subdmat(N,nc);
   double* subdmatptr = &subdmat(0, 0);
   double* distptr = REAL(dist);
+  const int* colIdxptr = colIdx.begin();
 
   int m;
   int l = 0;
 
   for(int j = 0; j < nc; j++){
-    m = indexing(N, colIdx[j]+1, colIdx[j]);
+    m = indexing(N, colIdxptr[j]+1, colIdxptr[j]);
 
-    for(int i = 0; i < colIdx[j]; i++){
-      subdmatptr[l++] = distptr[indexing(N,colIdx[j],i)];
+    for(int i = 0; i < colIdxptr[j]; i++){
+      subdmatptr[l++] = distptr[indexing(N,colIdxptr[j],i)];
     }
 
     subdmatptr[l++] = 0;
 
-    for(int k = (colIdx[j]+1); k < N; k++){
+    for(int k = (colIdxptr[j]+1); k < N; k++){
       subdmatptr[l++] = distptr[m];
       m++;
     }
