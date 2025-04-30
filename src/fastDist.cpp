@@ -104,7 +104,9 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
   }
 
   const int nc   = X.ncol();
-  const int len = nr*(nr-1) >> 1;
+
+  long long tmp = static_cast<long long>(nr) * (nr - 1) >> 1;
+  const int len = static_cast<int>(tmp);
   NumericVector out(len);
 
   const double* xptr = REAL(X);    // column-major

@@ -38,8 +38,10 @@ NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector 
   if(n > 65535){
     Rcpp::stop("length(idx) exceeds 65535!");
   }
+  long long tmp = static_cast<long long>(n) * (n - 1) >> 1;
+  const int len = static_cast<int>(tmp);
+  NumericVector subdmat(len);
 
-  NumericVector subdmat((n-1)*n >> 1);
   double* subdmatptr = REAL(subdmat);
   double* distptr = REAL(dist);
   const int* idxptr = idx.begin();

@@ -11,6 +11,15 @@ test_that("Dist2Mat gives similar results as as.matrix", {
   expect_equal(D2M, as_matrix)
 })
 
+
+test_that("Dist2Mat gives similar results as as.matrix", {
+
+  D2M = as.vector(Dist2Mat(dx))
+  as_matrix = as.vector(as.matrix(Dist2Mat(dx)))
+  expect_equal(D2M, as_matrix)
+})
+
+
 test_that("invalid dist", {
 
   test_cases = list(1:100, as.matrix(c(1:99, NA)))
