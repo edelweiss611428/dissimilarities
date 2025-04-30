@@ -13,6 +13,16 @@ test_that("subDist2Mat gives similar results as as.matrix", {
   expect_equal(subDist2Mat_, as_matrix)
 })
 
+test_that("fail if output matrix size > MAX.INT", {
+  x_large = as.matrix(rnorm(1000))
+  dx_large = fastDist(x_large)
+  idx1_large = rep(1:5, 10^5)
+  idx2_large = rep(1:5, 10^5)
+  expect_error(subDist2Mat(dx_large, idx1_large, idx2_large))
+
+})
+
+
 test_that("invalid dist", {
 
   test_cases = list(F, 1:100, as.matrix(c(1:99, NA)))

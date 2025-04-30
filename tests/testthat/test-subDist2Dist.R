@@ -20,6 +20,13 @@ test_that("invalid dist", {
 
 })
 
+test_that("fail if output dist > 65535", {
+  x_large = as.matrix(rnorm(1000))
+  dx_large = fastDist(x_large)
+  idx_large = rep(1:5, 10^5)
+  expect_error(subDist2Dist(dx_large, idx_large))
+})
+
 
 test_that("invalid idx", {
 

@@ -104,7 +104,7 @@ NumericVector fastDistCpp(const NumericMatrix& X, std::string method = "euclidea
   }
 
   const int nc   = X.ncol();
-  const int len = nr * (nr - 1) / 2;
+  const int len = nr*(nr-1) >> 1;
   NumericVector out(len);
 
   const double* xptr = REAL(X);    // column-major
@@ -199,8 +199,9 @@ NumericMatrix fastDistABCpp(const NumericMatrix& A, const NumericMatrix& B, std:
   const int nB   = B.nrow();
 
   const long long MAX_INT = 2147483647;  // 2^31 - 1
+  long long prod = static_cast<long long>(nA) * nB;
 
-  if (nA*nB > MAX_INT) {
+  if (prod > MAX_INT) {
     Rcpp::stop("nrow(A)*nrow(B) exceeds 2^31-1!");
   }
 

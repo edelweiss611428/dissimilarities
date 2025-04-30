@@ -34,6 +34,11 @@ NumericVector subsetDist2DistCpp(const NumericVector &dist, const IntegerVector 
 
   int N = dist.attr("Size");
   int n = idx.size();
+
+  if(n > 65535){
+    Rcpp::stop("length(idx) exceeds 65535!");
+  }
+
   NumericVector subdmat((n-1)*n >> 1);
   double* subdmatptr = REAL(subdmat);
   double* distptr = REAL(dist);
@@ -63,6 +68,15 @@ NumericMatrix subsetDist2MatCpp(const NumericVector &dist, const IntegerVector &
   int N = dist.attr("Size");
   int n1 = idx1.size();
   int n2 = idx2.size();
+
+  long long prod = static_cast<long long>(n1) * n2;
+
+  const long long MAX_INT = 2147483647;  // 2^31 - 1
+
+  if (prod > MAX_INT) {
+    Rcpp::stop("Output matrix size exceeds 2^31-1!");
+  }
+
   NumericMatrix subdmat(n1,n2);
   int k = 0;
   double* subdmatptr = &subdmat(0, 0);
@@ -90,6 +104,14 @@ NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colI
 
   int N = dist.attr("Size");
   int nc = colIdx.size();
+  long long prod = static_cast<long long>(N) * nc;
+
+  const long long MAX_INT = 2147483647;  // 2^31 - 1
+
+  if (prod > MAX_INT) {
+    Rcpp::stop("Output matrix size exceeds 2^31-1!");
+  }
+
   NumericMatrix subdmat(N,nc);
   double* subdmatptr = &subdmat(0, 0);
   double* distptr = REAL(dist);
@@ -121,6 +143,13 @@ NumericMatrix subsetColsCpp(const NumericVector &dist, const IntegerVector &colI
 NumericMatrix Dist2MatCpp(const NumericVector &dist){
 
   int N = dist.attr("Size");
+  long long prod = static_cast<long long>(N) * N;
+  const long long MAX_INT = 2147483647;  // 2^31 - 1
+
+  if (prod > MAX_INT) {
+    Rcpp::stop("Output matrix size exceeds 2^31-1!");
+  }
+
   NumericMatrix dmat(N,N);
   int idx = 0;
   double d;
