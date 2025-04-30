@@ -48,6 +48,5 @@ fastDist = function(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L
 
   return(.fastDistCpp(X, method, diag, upper, p))
 
-
 }
 
