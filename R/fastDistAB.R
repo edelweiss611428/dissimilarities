@@ -1,10 +1,10 @@
 #' @name fastDistAB
-#' @title Compute Pairwise Distances Between Rows of Two Matrices
+#' @title Compute pairwise distances between rows of two matrices
 #'
 #' @description
 #' Efficiently computes pairwise distances between the rows of two numeric matrices using various distance metrics.
 #'
-#' @usage fastDistAB(A, B, method = "euclidean", p = 2)
+#' @usage fastDistAB(A, B, method = "euclidean", p = 2L)
 #'
 #' @param A A numeric matrix.
 #' @param B A numeric matrix.

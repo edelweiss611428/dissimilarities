@@ -39,6 +39,12 @@ test_that("fail if nrow(A)*nrow(B) > MAX.INT", {
   expect_error(fastDistAB(x_large, y_large))
 })
 
+test_that("fail if different ncol", {
+  x_ = matrix(rnorm(100), nrow = 20)
+  y_ = matrix(rnorm(100), nrow = 5)
+  expect_error(fastDistAB(x_, y_))
+})
+
 
 test_that("invalid method", {
 

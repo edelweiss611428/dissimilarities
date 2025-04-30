@@ -32,6 +32,7 @@ checkDist = function(dist){
   if(!inherits(dist, "dist")) {
     stop("dist must be a 'dist' object!")
   }
+  na.fail(dist)
 }
 
 #single boolean value?

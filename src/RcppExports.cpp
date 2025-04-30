@@ -11,6 +11,21 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// expandDistCpp
+NumericVector expandDistCpp(const NumericVector& distA, const NumericMatrix& distBA, const NumericVector& distB, bool diag, bool upper);
+RcppExport SEXP _dissimilarities_expandDistCpp(SEXP distASEXP, SEXP distBASEXP, SEXP distBSEXP, SEXP diagSEXP, SEXP upperSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type distA(distASEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type distBA(distBASEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type distB(distBSEXP);
+    Rcpp::traits::input_parameter< bool >::type diag(diagSEXP);
+    Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
+    rcpp_result_gen = Rcpp::wrap(expandDistCpp(distA, distBA, distB, diag, upper));
+    return rcpp_result_gen;
+END_RCPP
+}
 // subsetDist2DistCpp
 NumericVector subsetDist2DistCpp(const NumericVector& dist, const IntegerVector& idx, bool diag, bool upper);
 RcppExport SEXP _dissimilarities_subsetDist2DistCpp(SEXP distSEXP, SEXP idxSEXP, SEXP diagSEXP, SEXP upperSEXP) {
@@ -104,6 +119,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_dissimilarities_expandDistCpp", (DL_FUNC) &_dissimilarities_expandDistCpp, 5},
     {"_dissimilarities_subsetDist2DistCpp", (DL_FUNC) &_dissimilarities_subsetDist2DistCpp, 4},
     {"_dissimilarities_subsetDist2MatCpp", (DL_FUNC) &_dissimilarities_subsetDist2MatCpp, 3},
     {"_dissimilarities_subsetColsCpp", (DL_FUNC) &_dissimilarities_subsetColsCpp, 2},

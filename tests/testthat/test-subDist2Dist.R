@@ -10,9 +10,11 @@ test_that("subDist2Dist gives similar results as as.matrix", {
   expect_equal(subDist2Dist_, as_matrix)
 })
 
-test_that("invalid dist", {
 
-  test_cases = list(F, 1:100, as.matrix(c(1:99, NA)))
+test_that("invalid dist", {
+  dx1 = dx
+  dx1[1] = NA
+  test_cases = list(dx1, 1:100, as.matrix(c(1:99, NA)))
 
   for(i in seq_along(test_cases)){
     expect_error(subDist2Dist(test_cases[[i]], idx))

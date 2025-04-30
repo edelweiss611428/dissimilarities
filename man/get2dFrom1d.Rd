@@ -15,7 +15,7 @@ get2dFrom1d(idx1d, N)
 An integer matrix storing the corresponding 2D indexes.
 }
 \description{
-Efficiently compute 2D-indexing from 1D-indexing
+Efficiently computes 2D-indexing from 1D-indexing
 }
 \details{
 Converts 1D indexing (as used in R's "dist" objects) into 2D indexing (row-column pairs)

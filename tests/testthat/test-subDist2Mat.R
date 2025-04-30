@@ -25,7 +25,9 @@ test_that("fail if output matrix size > MAX.INT", {
 
 test_that("invalid dist", {
 
-  test_cases = list(F, 1:100, as.matrix(c(1:99, NA)))
+  dx1 = dx
+  dx1[1] = NA
+  test_cases = list(dx1, 1:100, as.matrix(c(1:99, NA)))
 
   for(i in seq_along(test_cases)){
     expect_error(subDist2Mat(test_cases[[i]], idx1, idx2))

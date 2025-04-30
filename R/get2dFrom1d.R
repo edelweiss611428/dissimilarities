@@ -1,7 +1,7 @@
 #' @name get2dFrom1d
 #' @title 1D-indexing to 2D-indexing
 #'
-#' @description  Efficiently compute 2D-indexing from 1D-indexing
+#' @description  Efficiently computes 2D-indexing from 1D-indexing
 #'
 #' @usage get2dFrom1d(idx1d, N)
 #'

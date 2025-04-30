@@ -2,7 +2,7 @@
 #include <math.h>
 using namespace Rcpp;
 // expandDistCpp(): Compute a pair-wise distance matrix of class "dist"
-// [[Rcpp::export]]
+// [[Rcpp::export(.expandDistCpp)]]
 NumericVector expandDistCpp(const NumericVector& distA, //dist obj
                              const NumericMatrix& distBA,
                              const NumericVector& distB, //dist obj
