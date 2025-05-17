@@ -1,4 +1,5 @@
 # dissimilarities
+[![dissimilarities status badge](https://edelweiss611428.r-universe.dev/dissimilarities/badges/version)](https://edelweiss611428.r-universe.dev/dissimilarities)
 
 ### Description
 
