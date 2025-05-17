@@ -105,6 +105,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// get1dFrom2dCpp
+int get1dFrom2dCpp(int nr, int i, int j);
+RcppExport SEXP _dissimilarities_get1dFrom2dCpp(SEXP nrSEXP, SEXP iSEXP, SEXP jSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nr(nrSEXP);
+    Rcpp::traits::input_parameter< int >::type i(iSEXP);
+    Rcpp::traits::input_parameter< int >::type j(jSEXP);
+    rcpp_result_gen = Rcpp::wrap(get1dFrom2dCpp(nr, i, j));
+    return rcpp_result_gen;
+END_RCPP
+}
 // get2dFrom1dCpp
 IntegerMatrix get2dFrom1dCpp(const IntegerVector& idx, int n);
 RcppExport SEXP _dissimilarities_get2dFrom1dCpp(SEXP idxSEXP, SEXP nSEXP) {
@@ -126,6 +139,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_dissimilarities_Dist2MatCpp", (DL_FUNC) &_dissimilarities_Dist2MatCpp, 1},
     {"_dissimilarities_fastDistCpp", (DL_FUNC) &_dissimilarities_fastDistCpp, 5},
     {"_dissimilarities_fastDistABCpp", (DL_FUNC) &_dissimilarities_fastDistABCpp, 4},
+    {"_dissimilarities_get1dFrom2dCpp", (DL_FUNC) &_dissimilarities_get1dFrom2dCpp, 3},
     {"_dissimilarities_get2dFrom1dCpp", (DL_FUNC) &_dissimilarities_get2dFrom1dCpp, 2},
     {NULL, NULL, 0}
 };
