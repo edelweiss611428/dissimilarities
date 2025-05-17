@@ -2,7 +2,7 @@
 #' @title Expanding a distance matrix given new data
 #'
 #' @description
-#' Efficiently appends new "rows" to an existing "dist" object without recomputing a full pairwise distance matrix.
+#' Efficiently appends new "rows" to an existing "dist" object without explicitly recomputing a full pairwise distance matrix.
 #'
 #' @usage expandDist(distA, A, B, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
 #'

@@ -1,7 +1,7 @@
 #' @name subCols
 #' @title Subsetting a "dist" object by columns
 #'
-#' @description  Efficiently subsets a "dist" object by selecting specified columns, returning the corresponding section of the distance matrix.
+#' @description  Efficiently extracts a column-wise subset of a "dist" object, returning the corresponding submatrix of pairwise distances. # nolint
 #'
 #' @usage subCols(dist, idx)
 #'
