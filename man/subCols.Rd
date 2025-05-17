@@ -15,7 +15,7 @@ subCols(dist, idx)
 A numeric "matrix" containing the pairwise distances between all rows and the specified columns.
 }
 \description{
-Efficiently subsets a "dist" object by selecting specified columns, returning the corresponding section of the distance matrix.
+Efficiently extracts a column-wise subset of a "dist" object, returning the corresponding submatrix of pairwise distances. # nolint
 }
 \details{
 This function extracts specified columns from a "dist" object without explicit conversion to a dense distance "matrix",

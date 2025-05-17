@@ -27,7 +27,7 @@ the distance metric specified in this function. This requires manual check.}
 A distance matrix of class "dist" for rbind(A,B).
 }
 \description{
-Efficiently appends new "rows" to an existing "dist" object without recomputing a full pairwise distance matrix.
+Efficiently appends new "rows" to an existing "dist" object without explicitly recomputing a full pairwise distance matrix.
 }
 \details{
 Expands an existing distance matrix of class "dist" for matrix A, given new data B,
