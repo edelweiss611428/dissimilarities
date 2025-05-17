@@ -12,6 +12,7 @@ The current version includes the following features:
 - fastDist: Computing a "dist" object given a numeric matrix.
 - fastDistAB: Computing a numeric "matrix" storing pairwise distances between rows in two matrices.
 - get2dFrom1d: Computing 2D-indexing given 1D-indexing (as used in R's "dist" objects).
+- get1dFrom2d: Computing 1D-indexing given 2D-indexing (a row-column pair).
 - expandDist: Expanding a "dist" object given new data.
 
 Feature(s) under development:
