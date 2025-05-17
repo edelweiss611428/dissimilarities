@@ -11,6 +11,8 @@ Description: Efficiently creates, manipulates, and subsets "dist" objects, commo
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/edelweiss611428/dissimilarities
+BugReports: https://github.com/edelweiss611428/dissimilarities/issues
 Imports: 
     Rcpp,
     microbenchmark,
