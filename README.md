@@ -6,8 +6,8 @@
 ### Description
 
 <p align="justify"> The package provides efficient and user-friendly functions for creating, manipulating, and subsetting "dist" objects, which are commonly used in clustering applications in R. </p> 
-The current version includes the following features:
-
+The current version includes the following features:  
+   
 - **Dist2Mat**: Converting a "dist" object to a numeric matrix.
 - **subDist2Dist**: Subsetting a "dist" object to a  "dist" object.
 - **subDist2Mat**: Subsetting a "dist" object to a numeric "matrix".
