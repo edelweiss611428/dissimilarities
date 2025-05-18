@@ -1,5 +1,7 @@
 # dissimilarities
-[![dissimilarities status badge](https://edelweiss611428.r-universe.dev/dissimilarities/badges/version)](https://edelweiss611428.r-universe.dev/dissimilarities) [![CRAN Version](https://www.r-pkg.org/badges/version/dissimilarities)](https://CRAN.R-project.org/package=dissimilarities) [![](https://cranlogs.r-pkg.org/badges/dissimilarities)](https://cran.r-project.org/package=dissimilarities)
+[![dissimilarities status badge](https://edelweiss611428.r-universe.dev/dissimilarities/badges/version)](https://edelweiss611428.r-universe.dev/dissimilarities)
+[![CRAN Version](https://img.shields.io/cran/v/dissimilarities?label=CRAN&style=flat-square)](https://CRAN.R-project.org/package=dissimilarities)
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/dissimilarities)](https://CRAN.R-project.org/package=dissimilarities)
 
 ### Description
 
