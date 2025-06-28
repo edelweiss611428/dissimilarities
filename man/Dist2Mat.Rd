@@ -20,7 +20,8 @@ Converts a "dist" object, typically created using the stats::dist function, into
 This implementation is optimised for speed and performs significantly faster than base::as.matrix or proxy::as.matrix
 when applied to "dist" objects.
 
-Row names are retained. If it is null, as.character(1:nObs) will be used as row names instead.
+Row names are retained. If it is null, as.character(1:nObs) will be used as the row and column names of the resulting
+matrix instead.
 }
 \examples{
 

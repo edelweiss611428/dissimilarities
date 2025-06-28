@@ -27,7 +27,7 @@ This function computes the full pairwise distance matrix between the rows of mat
 without forming a concatenated matrix or performing unnecessary intermediate conversions. It supports multiple
 commonly used distance measures and is optimised for speed.
 
-Row names in A and B are retained. If either row.names(A) or row.names(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
+Row names in A and B are retained. If either rownames(A) or rownames(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
 will be used as row and column names of the resulting matrix instead.
 }
 \examples{

@@ -47,7 +47,7 @@ expandDist = function(distA, A, B, method = "euclidean",
 
   checkDist(distA)
   if(attr(distA, "Size") != nrow(A)){
-    stop("The number of row in distA does not match that of A!")
+    stop("The number of rows in distA does not match that of A!")
   }
 
   checkMat(A)
