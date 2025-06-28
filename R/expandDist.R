@@ -21,7 +21,7 @@
 #' without explicitly computing the distance matrix of rbind(A,B). This supports multiple commonly
 #' used distance measures and is optimised for speed.
 #'
-#' Row names are retained. If either row.names(A) or row.names(B) is null, as.character(1:(nrow(A)+nrow(B)))
+#' Row names are retained. If either rownames(A) or rownames(B) is null, as.character(1:(nrow(A)+nrow(B)))
 #' will be used as row names instead.
 #'
 #' @return A distance matrix of class "dist" for rbind(A,B).
@@ -59,12 +59,12 @@ expandDist = function(distA, A, B, method = "euclidean",
 
   distObj = .expandDistCpp(distA, distBA, distB, diag, upper)
 
-  if(is.null(row.names(A)) | is.null(row.names(B))){
+  if(is.null(rownames(A)) | is.null(rownames(B))){
     nrA = nrow(A)
     nrB = nrow(B)
     attr(distObj, which = "Labels") = as.character(1:(nrA+nrB))
   } else {
-    attr(distObj, which = "Labels") = c(row.names(A),row.names(B))
+    attr(distObj, which = "Labels") = c(rownames(A),rownames(B))
   }
 
   return(distObj)

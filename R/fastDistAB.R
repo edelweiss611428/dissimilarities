@@ -17,7 +17,7 @@
 #' without forming a concatenated matrix or performing unnecessary intermediate conversions. It supports multiple
 #' commonly used distance measures and is optimised for speed.
 #'
-#' Row names in A and B are retained. If either row.names(A) or row.names(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
+#' Row names in A and B are retained. If either rownames(A) or rownames(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
 #' will be used as row and column names of the resulting matrix instead.
 #'
 #' @return A numeric matrix of dimensions \code{nrow(A)} by \code{nrow(B)}, where each entry represents the distance between a row in \code{A} and a row in \code{B}.
@@ -51,12 +51,12 @@ fastDistAB = function(A, B, method = "euclidean", p = 2L){
 
   distAB =.fastDistABCpp(A, B, method, p)
 
-  if(is.null(row.names(A)) | is.null(row.names(B))){
-    row.names(distAB) = as.character(1:nrow(A))
+  if(is.null(rownames(A)) | is.null(rownames(B))){
+    rownames(distAB) = as.character(1:nrow(A))
     colnames(distAB) = as.character(1:nrow(B))
   } else{
-    row.names(distAB) = row.names(A)
-    colnames(distAB) = row.names(B)
+    rownames(distAB) = rownames(A)
+    colnames(distAB) = rownames(B)
   }
 
   return(distAB)

@@ -44,9 +44,9 @@ Dist2Mat = function(dist){
   rN = attr(dist, "Labels")
 
   if(is.null(rN)){
-     row.names(distMat) = colnames(distMat) = as.character(1:attr(dist, "Size"))
+     rownames(distMat) = colnames(distMat) = as.character(1:attr(dist, "Size"))
   } else {
-     row.names(distMat) = colnames(distMat) = rN
+     rownames(distMat) = colnames(distMat) = rN
   }
 
   return(distMat)

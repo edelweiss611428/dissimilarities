@@ -52,10 +52,10 @@ subDist2Mat = function(dist, idx1, idx2){
   rN = attr(dist, "Labels")
 
   if(is.null(rN)){
-    row.names(subDistMat) = as.character(idx1)
+    rownames(subDistMat) = as.character(idx1)
     colnames(subDistMat) = as.character(idx2)
   } else {
-    row.names(subDistMat) =  rN[idx1]
+    rownames(subDistMat) =  rN[idx1]
     colnames(subDistMat) =  rN[idx2]
   }
 

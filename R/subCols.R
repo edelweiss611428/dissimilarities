@@ -49,10 +49,10 @@ subCols = function(dist, idx){
 
   subDistMat = .subsetColsCpp(dist, idx - 1L)
   if(is.null(rN)){
-    row.names(subDistMat) = as.character(1:N)
+    rownames(subDistMat) = as.character(1:N)
     colnames(subDistMat) = as.character(idx)
   } else {
-    row.names(subDistMat) =  rN
+    rownames(subDistMat) =  rN
     colnames(subDistMat) =  rN[idx]
   }
 

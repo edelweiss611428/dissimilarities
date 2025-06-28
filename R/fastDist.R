@@ -50,10 +50,10 @@ fastDist = function(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L
 
   distObj = .fastDistCpp(X, method, diag, upper, p)
 
-  if(is.null(row.names(X))){
+  if(is.null(rownames(X))){
     attr(distObj, which = "Labels") = as.character(1:attr(distObj, "Size"))
   } else {
-    attr(distObj, which = "Labels") = row.names(X)
+    attr(distObj, which = "Labels") = rownames(X)
   }
 
   return(distObj)
