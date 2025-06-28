@@ -31,6 +31,24 @@ test_that("invalid dist", {
 })
 
 
+test_that("Dist2Mat retains row names", {
+  set.seed(59)
+  x = matrix(rnorm(100), nrow = 10)
+  rownames(x) = paste0("X", 1:10)
+  dx = fastDist(x)
+  d2m = Dist2Mat(dx)
+  expect_equal(rownames(d2m), rownames(x))
+  expect_equal(colnames(d2m), rownames(x))
+
+  x = matrix(rnorm(100), nrow = 10)
+  dx = fastDist(x)
+  d2m = Dist2Mat(dx)
+  expect_equal(rownames(d2m), as.character(1:10))
+  expect_equal(colnames(d2m), as.character(1:10))
+})
+
+
+
 
 
 
