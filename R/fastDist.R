@@ -49,12 +49,12 @@ fastDist = function(X, method = "euclidean", diag = FALSE, upper = FALSE, p = 2L
   distObj = .fastDistCpp(X, method, diag, upper, p)
 
   if(is.null(row.names(X))){
-    warning("Row names are null. Proceed to use as.character(1:nObs) as row names!")
+    message("Row names are null. Proceed to use as.character(1:nObs) as row names!")
     attr(distObj, which = "Labels") = as.character(1:attr(distObj, "Size"))
   } else {
     rowNames = row.names(X)
     if(length(unique(rowNames)) != length(rowNames)){
-      warning("Row names are not unique!")
+      message("Row names are not unique!")
     }
     attr(distObj, which = "Labels") = rowNames
   }
