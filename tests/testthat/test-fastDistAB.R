@@ -79,5 +79,29 @@ test_that("data contain NA | not numeric matrix", {
 })
 
 
+test_that("fastDistAB retains row names", {
+  set.seed(61)
+  A = matrix(rnorm(100), nrow = 10)
+  B = matrix(rnorm(100), nrow = 10)
+  rownames(A) = paste0("A", 1:10)
+  rownames(B) = paste0("B", 1:10)
+  dAB = fastDistAB(A,B)
+
+  expect_equal(rownames(dAB), rownames(A))
+  expect_equal(colnames(dAB), rownames(B))
+
+  A = matrix(rnorm(100), nrow = 10)
+  B = matrix(rnorm(100), nrow = 10)
+  dAB = fastDistAB(A,B)
+
+  expect_equal(rownames(dAB), as.character(1:10))
+  expect_equal(colnames(dAB), as.character(1:10))
+})
+
+
+
+
+
+
 
 

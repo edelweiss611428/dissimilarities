@@ -52,6 +52,20 @@ test_that("invalid (diag, upper) option", {
 
 })
 
+test_that("subDist2Dist retains row names", {
+  set.seed(61)
+  X = matrix(rnorm(100), nrow = 10)
+  rownames(X) = paste0("X", 1:10)
+  dx = fastDist(X)
+  subDx = subDist2Dist(dx, 1:5)
+  expect_equal(attr(subDx, "Labels"), rownames(X)[1:5])
+
+  X = matrix(rnorm(100), nrow = 10)
+  dx = fastDist(X)
+  subDx = subDist2Dist(dx, 1:5)
+  expect_equal(attr(subDx, "Labels"), as.character(1:5))
+})
+
 
 
 

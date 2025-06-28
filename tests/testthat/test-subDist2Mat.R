@@ -47,3 +47,23 @@ test_that("invalid idx", {
 
 })
 
+
+test_that("subDist2Mat retains row names", {
+  set.seed(61)
+  X = matrix(rnorm(100), nrow = 10)
+  rownames(X) = paste0("X", 1:10)
+  dx = fastDist(X)
+  subDMat = subDist2Mat(dx, 1:5, 6:8)
+  expect_equal(rownames(subDMat), rownames(X)[1:5])
+  expect_equal(colnames(subDMat), rownames(X)[6:8])
+
+  X = matrix(rnorm(100), nrow = 10)
+  dx = fastDist(X)
+  subDMat = subDist2Mat(dx, 1:5, 6:8)
+  expect_equal(rownames(subDMat), as.character(1:5))
+  expect_equal(colnames(subDMat), as.character(6:8))
+
+})
+
+
+

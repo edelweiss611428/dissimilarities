@@ -40,3 +40,29 @@ test_that("invalid idx", {
 
 })
 
+
+
+test_that("subCols retains row names", {
+  set.seed(61)
+  X = matrix(rnorm(100), nrow = 10)
+  rownames(X) = paste0("X", 1:10)
+  dx = fastDist(X)
+  subDx = subCols(dx, 1:5)
+  expect_equal(rownames(subDx), rownames(X))
+  expect_equal(colnames(subDx), rownames(X)[1:5])
+
+  X = matrix(rnorm(100), nrow = 10)
+  dx = fastDist(X)
+  subDx = subCols(dx, 1:5)
+  expect_equal(rownames(subDx), as.character(1:10))
+  expect_equal(colnames(subDx), as.character(1:5))
+})
+
+
+
+
+
+
+
+
+

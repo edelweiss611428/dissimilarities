@@ -88,6 +88,28 @@ test_that("dist contains NA | invalid dist", {
   }
 })
 
+test_that("expandDist retains row names", {
+  set.seed(61)
+  A = matrix(rnorm(100), nrow = 10)
+  B = matrix(rnorm(100), nrow = 10)
+  rownames(A) = paste0("A", 1:10)
+  rownames(B) = paste0("B", 1:10)
+  dA = fastDist(A)
+  dAB = expandDist(dA, A,B)
+
+  rN = c(rownames(A), rownames(B))
+  expect_equal(attr(dAB, "Labels"), rN)
+
+
+  A = matrix(rnorm(100), nrow = 10)
+  B = matrix(rnorm(100), nrow = 10)
+  dA = fastDist(A)
+  dAB = expandDist(dA, A,B)
+
+  rN = as.character(1:20)
+  expect_equal(attr(dAB, "Labels"), rN)
+})
+
 
 
 

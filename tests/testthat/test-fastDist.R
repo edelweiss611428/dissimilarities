@@ -73,4 +73,24 @@ test_that("invalid (diag, upper) option", {
 })
 
 
+test_that("fastDist retains row names", {
+  set.seed(59)
+  x = matrix(rnorm(100), nrow = 10)
+  rownames(x) = paste0("X", 1:10)
+  dx = fastDist(x)
+  expect_equal(attr(dx, "Labels"), rownames(x))
+
+  x = matrix(rnorm(100), nrow = 10)
+  rownames(x) = as.character(1:10)
+  dx = fastDist(x)
+  expect_equal(attr(dx, "Labels"), rownames(x))
+})
+
+
+
+
+
+
+
+
 
