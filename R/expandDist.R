@@ -54,7 +54,22 @@ expandDist = function(distA, A, B, method = "euclidean",
   distBA = .fastDistABCpp(B,A, method, p)
   distB = .fastDistCpp(B, method, diag, upper, p)
 
-  return(.expandDistCpp(distA, distBA, distB, diag, upper))
+  distObj = .expandDistCpp(distA, distBA, distB, diag, upper)
+
+  if(is.null(row.names(A)) | is.null(row.names(A))){
+    warning("Row names of A/B are null. Proceed to use as.character(1:(nrow(A)+nrow(B))) as row names!")
+    nrA = nrow(A)
+    nrB = nrow(B)
+    attr(distObj, which = "Labels") = as.character(1:(nrA+nrB))
+  } else {
+    rowNames = c(row.names(A),row.names(B))
+    if(length(unique(rowNames)) != length(rowNames)){
+      warning("Row names are not unique!")
+    }
+    attr(distObj, which = "Labels") = rowNames
+  }
+
+  return(distObj)
 
 }
 
