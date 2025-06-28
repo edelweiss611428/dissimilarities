@@ -11,6 +11,9 @@
 #' This implementation is optimised for speed and performs significantly faster than base::as.matrix or proxy::as.matrix
 #' when applied to "dist" objects.
 #'
+#' Row names are retained. If it is null, as.character(1:nObs) will be used as the row and column names of the resulting
+#' matrix instead.
+#'
 #' @importFrom microbenchmark microbenchmark
 #' @importFrom proxy as.matrix
 #' @return A distance "matrix".
@@ -37,7 +40,16 @@ Dist2Mat = function(dist){
 
   checkDist(dist)
 
-  return(.Dist2MatCpp(dist))
+  distMat = .Dist2MatCpp(dist)
+  rN = attr(dist, "Labels")
+
+  if(is.null(rN)){
+     row.names(distMat) = colnames(distMat) = as.character(1:attr(dist, "Size"))
+  } else {
+     row.names(distMat) = colnames(distMat) = rN
+  }
+
+  return(distMat)
 
 }
 

@@ -24,8 +24,11 @@ Efficiently computes pairwise distances between the rows of two numeric matrices
 }
 \details{
 This function computes the full pairwise distance matrix between the rows of matrices \code{A} and \code{B},
-without forming a concatenated matrix or performing unnecessary intermediate conversions.
-It supports multiple commonly used distance measures and is optimised for speed.
+without forming a concatenated matrix or performing unnecessary intermediate conversions. It supports multiple
+commonly used distance measures and is optimised for speed.
+
+Row names in A and B are retained. If either row.names(A) or row.names(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
+will be used as row and column names of the resulting matrix instead.
 }
 \examples{
 

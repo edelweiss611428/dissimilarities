@@ -20,6 +20,8 @@ Efficiently computes 2D-indexing from 1D-indexing
 \details{
 Converts 1D indexing (as used in R's "dist" objects) into 2D indexing (row-column pairs)
 for a distance matrix of size \eqn{N \times N}.
+
+Currently, name-based indexing is not supported."
 }
 \examples{
 

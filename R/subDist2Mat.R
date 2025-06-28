@@ -13,6 +13,9 @@
 #' This function efficiently subsets a "dist" object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
 #' It avoids explicit conversion from the "dist" object to a dense "matrix", improving memory efficiency and computational speed, especially with large datasets.
 #'
+#' Row names are retained. If it is null, as.character(idx1) and as.character(idx2)
+#' will be used as row and column names of the resulting matrix instead.
+#'
 #' @return A numeric matrix storing pairwise distances between observations column-indexed by \code{idx1} and row-indexed by \code{idx2}.
 #'
 #' @importFrom microbenchmark microbenchmark
@@ -45,6 +48,17 @@ subDist2Mat = function(dist, idx1, idx2){
   idx1 = checkIdx(idx1, N) #double to int conversion
   idx2 = checkIdx(idx2, N)
 
-  return(.subsetDist2MatCpp(dist, idx1-1L, idx2-1L))
+  subDistMat = .subsetDist2MatCpp(dist, idx1-1L, idx2-1L)
+  rN = attr(dist, "Labels")
+
+  if(is.null(rN)){
+    row.names(subDistMat) = as.character(idx1)
+    colnames(subDistMat) = as.character(idx2)
+  } else {
+    row.names(subDistMat) =  rN[idx1]
+    colnames(subDistMat) =  rN[idx2]
+  }
+
+  return(subDistMat)
 
 }

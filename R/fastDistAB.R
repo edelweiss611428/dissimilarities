@@ -14,8 +14,11 @@
 #'
 #' @details
 #' This function computes the full pairwise distance matrix between the rows of matrices \code{A} and \code{B},
-#' without forming a concatenated matrix or performing unnecessary intermediate conversions.
-#' It supports multiple commonly used distance measures and is optimised for speed.
+#' without forming a concatenated matrix or performing unnecessary intermediate conversions. It supports multiple
+#' commonly used distance measures and is optimised for speed.
+#'
+#' Row names in A and B are retained. If either row.names(A) or row.names(B) is null, as.character(1:nrow(A)) and as.character(1:nrow(B))
+#' will be used as row and column names of the resulting matrix instead.
 #'
 #' @return A numeric matrix of dimensions \code{nrow(A)} by \code{nrow(B)}, where each entry represents the distance between a row in \code{A} and a row in \code{B}.
 #'
@@ -46,7 +49,17 @@ fastDistAB = function(A, B, method = "euclidean", p = 2L){
   checkMethod(method)
   p = checkP(p) #double to int conversion
 
-  return(.fastDistABCpp(A, B, method, p))
+  distAB =.fastDistABCpp(A, B, method, p)
+
+  if(is.null(row.names(A)) | is.null(row.names(B))){
+    row.names(distAB) = as.character(1:nrow(A))
+    colnames(distAB) = as.character(1:nrow(B))
+  } else{
+    row.names(distAB) = row.names(A)
+    colnames(distAB) = row.names(B)
+  }
+
+  return(distAB)
 
 }
 

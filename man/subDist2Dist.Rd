@@ -25,6 +25,8 @@ Efficiently extracts a subset of observations from a "dist" object and returns a
 This function subsets a "dist" object directly without explicit conversion to a dense distance "matrix".
 It extracts only the relevant distances corresponding to the selected indices, improving both performance and memory efficiency.
 The result is returned as a subsetted "dist" object, preserving compatibility with downstream functions that accept this class.
+
+Row names are retained. If it is null, as.character(idx) will be used as row names instead.
 }
 \examples{
 

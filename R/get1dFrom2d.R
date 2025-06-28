@@ -13,11 +13,13 @@
 #' Converts 2D indexing (a row-column pair) into 1D indexing (as used in R's "dist" objects), given the number
 #' of observations N.
 #'
+#' Currently, name-based indexing is not supported."
+#'
 #' @return An integer specifying the 1d index
 #'
 #' @examples
 #' N = 5
-#' for(i in 1:4){ 
+#' for(i in 1:4){
 #'   for(j in (i+1):5){
 #'     print(get1dFrom2d(i,j,N))
 #'   }

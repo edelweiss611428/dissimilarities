@@ -22,6 +22,9 @@ Efficiently extracts a 2d submatrix of pairwise distances from a "dist" object.
 \details{
 This function efficiently subsets a "dist" object by row and column indices, returning the corresponding rectangular section as a numeric matrix.
 It avoids explicit conversion from the "dist" object to a dense "matrix", improving memory efficiency and computational speed, especially with large datasets.
+
+Row names are retained. If it is null, as.character(idx1) and as.character(idx2)
+will be used as row and column names of the resulting matrix instead.
 }
 \examples{
 

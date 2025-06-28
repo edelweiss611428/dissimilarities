@@ -15,6 +15,8 @@
 #' It extracts only the relevant distances corresponding to the selected indices, improving both performance and memory efficiency.
 #' The result is returned as a subsetted "dist" object, preserving compatibility with downstream functions that accept this class.
 #'
+#' Row names are retained. If it is null, as.character(idx) will be used as row names instead.
+#'
 #' @return A numeric "matrix" storing pairwise distances between the selected observations.
 #'
 #' @importFrom microbenchmark microbenchmark
@@ -44,8 +46,19 @@ subDist2Dist = function(dist, idx, diag = FALSE, upper = FALSE){
   N = attr(dist, "Size")
   checkBool(diag)
   checkBool(upper)
+
   idx = checkIdx(idx, N) #double to int conversion
 
-  return(.subsetDist2DistCpp(dist, idx - 1L, diag, upper))
+  subDistObj = .subsetDist2DistCpp(dist, idx - 1L, diag, upper)
+  rN = attr(dist, "Labels")
 
+  if(is.null(rN)){
+    attr(subDistObj, "Labels") = as.character(idx)
+  } else {
+    attr(subDistObj, "Labels") = rN[idx]
+  }
+
+  return(subDistObj)
 }
+
+

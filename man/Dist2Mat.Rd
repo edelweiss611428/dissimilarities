@@ -19,6 +19,8 @@ Efficiently converts a "dist" object into a symmetric distance "matrix".
 Converts a "dist" object, typically created using the stats::dist function, into a symmetric matrix form.
 This implementation is optimised for speed and performs significantly faster than base::as.matrix or proxy::as.matrix
 when applied to "dist" objects.
+
+Row names are retained. If it is null, as.character(1:nObs) will be used as row names instead.
 }
 \examples{
 

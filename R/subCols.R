@@ -12,6 +12,9 @@
 #' This function extracts specified columns from a "dist" object without explicit conversion to a dense distance "matrix",
 #' resulting in better performance and reduced memory overhead. Particularly useful when only a subset of distances is needed for downstream tasks.
 #'
+#' Row names are retained. If it is null, as.character(1:nObs) and as.character(idx)
+#' will be used as row and column names of the resulting matrix instead.
+#'
 #' @return A numeric "matrix" containing the pairwise distances between all rows and the specified columns.
 #'
 #' @importFrom microbenchmark microbenchmark
@@ -42,6 +45,17 @@ subCols = function(dist, idx){
   N = attr(dist, "Size")
   idx = checkIdx(idx,N) #double to int conversion
 
-  return(.subsetColsCpp(dist, idx - 1L))
+  rN = attr(dist, "Labels")
+
+  subDistMat = .subsetColsCpp(dist, idx - 1L)
+  if(is.null(rN)){
+    row.names(subDistMat) = as.character(1:N)
+    colnames(subDistMat) = as.character(idx)
+  } else {
+    row.names(subDistMat) =  rN
+    colnames(subDistMat) =  rN[idx]
+  }
+
+  return(subDistMat)
 
 }

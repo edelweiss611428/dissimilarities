@@ -20,6 +20,9 @@ Efficiently extracts a column-wise subset of a "dist" object, returning the corr
 \details{
 This function extracts specified columns from a "dist" object without explicit conversion to a dense distance "matrix",
 resulting in better performance and reduced memory overhead. Particularly useful when only a subset of distances is needed for downstream tasks.
+
+Row names are retained. If it is null, as.character(1:nObs) and as.character(idx)
+will be used as row and column names of the resulting matrix instead.
 }
 \examples{
 
