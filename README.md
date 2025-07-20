@@ -1,7 +1,7 @@
 # Welcome to dissimilarities
 [![R-CMD-check](https://github.com/edelweiss611428/dissimilarities/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/edelweiss611428/dissimilarities/actions/workflows/R-CMD-check.yaml) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/edelweiss611428/dissimilarities/graphs/commit-activity) [![dissimilarities status badge](https://edelweiss611428.r-universe.dev/dissimilarities/badges/version)](https://edelweiss611428.r-universe.dev/dissimilarities)
 [![CRAN Version](https://www.r-pkg.org/badges/version/dissimilarities)](https://CRAN.R-project.org/package=dissimilarities) 
-[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/dissimilarities)](https://CRAN.R-project.org/package=dissimilarities) [![codecov](https://codecov.io/gh/edelweiss611428/dissimilarities/branch/main/graph/badge.svg)](https://codecov.io/gh/edelweiss611428/dissimilarities)
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/dissimilarities)](https://CRAN.R-project.org/package=dissimilarities)[![codecov](https://codecov.io/gh/edelweiss611428/dissimilarities/graph/badge.svg?token=9T6HFV637M)](https://codecov.io/gh/edelweiss611428/dissimilarities)
 
 ### Description
 
